@@ -1,5 +1,5 @@
-#ifndef GB_H  
-#define GB_H
+#ifndef GA_H  
+#define GA_H
 
 #include "Bacteria.h"
 
