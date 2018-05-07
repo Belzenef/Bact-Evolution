@@ -38,6 +38,7 @@ class Cell{
 //                        Public Function members
 // =====================================================================
   void update();
+  bool die(float pdeath);
 
  protected :
 
