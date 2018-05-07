@@ -7,6 +7,7 @@ class Coordinates {
 //                               Constructors
 // =====================================================================
   Coordinates(unsigned int x, unsigned int y);
+  Coordinates(unsigned int n, unsigned int height, unsigned int width);
   Coordinates(const Coordinates &) = delete;
   Coordinates() = delete;
   
@@ -26,6 +27,11 @@ class Coordinates {
 // =====================================================================
   bool operator<(const Coordinates &) const;
   
+// =====================================================================
+//                           Public Function members
+// =====================================================================
+  unsigned int to_int(unsigned int height);
+
   protected :
 // =====================================================================
 //                               Data members
@@ -38,6 +44,8 @@ class Coordinates {
 // =====================================================================
 //                                Inline definitions
 // =====================================================================
+
 inline unsigned int Coordinates::x() const{ return x_; }
 inline unsigned int Coordinates::y() const{ return y_; }
+
 #endif
