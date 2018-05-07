@@ -30,7 +30,7 @@ class Coordinates {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-  unsigned int to_int(unsigned int height, unsigned int width);
+  unsigned int to_int(unsigned int height);
 
   protected :
 // =====================================================================

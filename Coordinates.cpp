@@ -5,7 +5,7 @@
 // =====================================================================
 Coordinates::Coordinates(unsigned int x, unsigned int y) : x_(x), y_(y){}
 
-Coordinates(unsigned int n, unsigned int height, unsigned int width){
+Coordinates::Coordinates(unsigned int n, unsigned int height, unsigned int width){
 	y_ = (n-1) % height;
   x_ = (n-1-y_)/h; 
 }
@@ -21,6 +21,6 @@ bool Coordinates::operator<(const Coordinates & other) const
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-unsigned int to_int(unsigned int height){
+unsigned int Coordinates::to_int(unsigned int height){
 	return(height*x_+y_+1);
 }
