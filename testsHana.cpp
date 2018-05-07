@@ -5,9 +5,10 @@
 #include "Gb.h"
 
 int main(int argc, char* argv[]){
-	std::cout << "Hello world!" << std::endl;
-	Gb bactB(1.0,2.0,3.0);
-	Ga bactA(1.0,2.0,3.0);
+
+	//testing Cell default ctor
+	std::cout << "testing Cell default ctor" << std::endl;
+	Cell cell1(1.0,2.0,3.0, 1, 1);
 	
 	return 0;
 }
