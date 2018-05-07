@@ -3,6 +3,7 @@
 #include "Cell.h"
 #include "Ga.h"
 #include "Gb.h"
+#include "Simulation.h"
 
 int main(int argc, char* argv[]){
 	std::cout << "Testing creation of bacterias (Ga et Gb)" << std::endl;
