@@ -20,13 +20,5 @@ Bacteria::~Bacteria() = default;
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-bool Bacteria::die(float pdeath){
-  if(getW()==0){ // testing fitness threshold
-    return true;
-  } else if (rand()<pdeath){ // testing death propability
-    return true;
-  } else {
-    return false;
-  }
-}
+
 

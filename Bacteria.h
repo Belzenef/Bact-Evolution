@@ -25,7 +25,7 @@ class Bacteria {
 // =====================================================================
 	virtual float metabolize(float R1, float R2, float out, float dt) = 0;
   virtual float getW() = 0;
-  bool die(float pdeath);
+
 
  protected :
 // =====================================================================
