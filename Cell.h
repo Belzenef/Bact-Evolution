@@ -10,6 +10,8 @@ class Cell{
 //                               Constructors
 // =====================================================================
   Cell(float a, float b, float c,unsigned int x, unsigned int y);
+  Cell()=delete;
+  Cell(const Cell& cell)=delete;
 
 // =====================================================================
 //                                Destructor
@@ -19,15 +21,15 @@ class Cell{
 // =====================================================================
 //                                  Getters
 // =====================================================================
-  inline unsigned int x();
-  inline unsigned int y();
-  inline float a();
-  inline float b();
-  inline float c();
-  inline float preva();
-  inline float prevb();
-  inline float prevc();
-  inline Bacteria * bacteria();
+  inline unsigned int x() const;
+  inline unsigned int y() const;
+  inline float a() const;
+  inline float b() const;
+  inline float c() const;
+  inline float preva() const;
+  inline float prevb() const;
+  inline float prevc() const;
+  inline Bacteria * bacteria() const;
 
 // =====================================================================
 //                                  Setters
@@ -69,15 +71,15 @@ class Cell{
 // =====================================================================
 //                            Inline definitions
 // =====================================================================
-inline float Cell::a() { return a_; }
-inline float Cell::b() { return b_; }
-inline float Cell::c() { return c_; }
-inline float Cell::preva() { return preva_; }
-inline float Cell::prevb() { return prevb_; }
-inline float Cell::prevc() { return prevc_; }
-inline unsigned int Cell::x() { return x_; }
-inline unsigned int Cell::y() { return y_; }
-inline Bacteria * Cell::bacteria() { return bacteria_; }
+inline float Cell::a() const{ return a_; }
+inline float Cell::b() const{ return b_; }
+inline float Cell::c() const{ return c_; }
+inline float Cell::preva() const{ return preva_; }
+inline float Cell::prevb() const{ return prevb_; }
+inline float Cell::prevc() const{ return prevc_; }
+inline unsigned int Cell::x() const{ return x_; }
+inline unsigned int Cell::y() const{ return y_; }
+inline Bacteria * Cell::bacteria() const{ return bacteria_; }
 inline void Cell::seta(float a) { a_=a; }
 inline void Cell::setb(float b) { b_=b; }
 inline void Cell::setc(float c) { c_=c; }
