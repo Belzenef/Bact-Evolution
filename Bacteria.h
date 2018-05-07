@@ -6,7 +6,7 @@ class Bacteria {
 // =====================================================================
 //                               Constructors
 // =====================================================================
-  Bacteria();
+  Bacteria(float a, float b, float c);
 
 // =====================================================================
 //                                Destructor
@@ -16,7 +16,16 @@ class Bacteria {
 // =====================================================================
 //                                  Getters
 // =====================================================================
-
+  inline float a() const;
+  inline float b() const;
+  inline float c() const;
+  
+// =====================================================================
+//                           Public Function members
+// =====================================================================
+	virtual float metabolize(float R1, float R2, float out, float dt) = 0;
+  virtual float getW() = 0;
+  bool die();
 
  protected :
 // =====================================================================
@@ -25,11 +34,13 @@ class Bacteria {
   float a_;
   float b_;
   float c_;
-
 };
 
 // =====================================================================
-//                            Getters' definitions
+//                            Inline definitions
 // =====================================================================
+inline float Bacteria::a() const { return a_; }
+inline float Bacteria::b() const { return b_; }
+inline float Bacteria::c() const { return c_; }
 
 #endif
