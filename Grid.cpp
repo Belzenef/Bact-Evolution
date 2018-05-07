@@ -19,7 +19,7 @@ Grid::Grid(unsigned int height,unsigned int width, float ainit):
 //                              Destructors
 //======================================================================
 Grid::~Grid(){
-  for (const auto & [ key, value ] : map:grid_){
-    delete[] key;
+  for ( auto it : grid_){
+    delete[] it.first;
   }
 }
