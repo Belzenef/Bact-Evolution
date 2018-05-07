@@ -23,7 +23,7 @@ class Bacteria {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-	virtual float metabolize(float R1, float R2, float out, float dt) = 0;
+	virtual float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt) = 0;
   virtual float getW() = 0;
 
 
@@ -34,7 +34,6 @@ class Bacteria {
   float a_;
   float b_;
   float c_;
-  static const unsigned int W_MIN; // fitness threshold
 };
 
 // =====================================================================

@@ -11,11 +11,13 @@ class Grid{
 //======================================================================
 //                              Constructors
 //======================================================================
-
+  Grid()=delete;
+  Grid(const Grid& Grid)=delete;
+  Grid(unsigned int height,unsigned int width, float ainit, float pdeath, float pmut, float raa, float rab, float rbb, float rbc, float d, float wmin);
 //======================================================================
 //                              Destructors
 //======================================================================
-
+  virtual ~Grid();
 //======================================================================
 //                              Getters
 //======================================================================
@@ -30,6 +32,17 @@ class Grid{
 //                               Data members
 // =====================================================================
   unordered_map<int*,Cell> grid_;
+  unsigned int height_;
+  unsigned int width_;
+  float ainit_;
+  float pdeath_;
+  float pmut_;
+  float raa_;
+  float rab_;
+  float rbb_;
+  float rbc_;
+  float d_;
+  float wmin_;
 
 // =====================================================================
 //                        Protected Function members

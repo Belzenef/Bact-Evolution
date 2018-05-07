@@ -38,12 +38,12 @@ void Cell::update(){
 	prevc_ = c_;
 }
 
-bool Cell::die(float pdeath){
+/*bool Cell::die(float pdeath){
   if(bacteria_ -> getW()==0){ // testing fitness threshold
     return true;
   } else if (((float) rand()/RAND_MAX )<pdeath){ // testing death propability
     return true;
   } else {
     return false;
-  }
+  }*/
 }

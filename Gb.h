@@ -18,7 +18,7 @@ class Gb : public Bacteria {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-  float metabolize(float Rbb, float Rbc, float Bout, float dt);
+  float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt);
   inline float getW();
 
 };
@@ -26,6 +26,6 @@ class Gb : public Bacteria {
 // =====================================================================
 //                            Inline definitions
 // =====================================================================
-inline float Gb::getW() { return ((c_>=W_MIN)*c_); }
+inline float Gb::getW() { return c_; }
 
 #endif
