@@ -18,7 +18,7 @@ class Ga : public Bacteria {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-  float metabolize(float Raa, float Rab, float Aout, float dt);
+  float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt);
   inline float getW();
   
 };
@@ -26,7 +26,7 @@ class Ga : public Bacteria {
 // =====================================================================
 //                            Inline definitions
 // =====================================================================
-inline float Ga::getW() { return ((b_>=W_MIN)*b_); }
+inline float Ga::getW() { return b_; }
 
 #endif
 

@@ -1,14 +1,33 @@
-#include "Cell.h" 
+#include "Cell.h"
+#include <cstdlib> 
+#include <time.h>
+#include <iostream>
+
+
 
 // =========================================================================
 //                               Constructors
 // =========================================================================
-Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y): a_(a), b_(b), c_(c), preva_(a), prevb_(b), prevc_(c), x_(x), y_(y){}
+Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y): a_(a), b_(b), c_(c), preva_(a), prevb_(b), prevc_(c), x_(x), y_(y){
+	// creates a bacteria A or B with a 50 % probability to create each
+	srand(time(NULL));
+	int i = rand()%100 ;
+	if ( i < 50){
+		bacteria_= new Ga(a,b,c);
+		//std::cout << "A" << std::endl;
+	}
+	else{
+		bacteria_ = new Gb(a, b, c);
+		//std::cout << "B" << std::endl;	
+	}
+}
 
 // =========================================================================
 //                                Destructor
 // =========================================================================
-Cell::~Cell() = default;
+Cell::~Cell() {
+	delete bacteria_;
+}
 
 // =========================================================================
 //                        Public Function members
@@ -19,10 +38,10 @@ void Cell::update(){
 	prevc_ = c_;
 }
 
-bool Cell::die(float pdeath){/*
-  if(getW()==0){ // testing fitness threshold
+/*bool Cell::die(float pdeath){
+  if(bacteria_ -> getW()==0){ // testing fitness threshold
     return true;
-  } else if (((float) rand()/RAND_MAX + 1)<pdeath){ // testing death propability
+  } else if (((float) rand()/RAND_MAX )<pdeath){ // testing death propability
     return true;
   } else {
     return false;
