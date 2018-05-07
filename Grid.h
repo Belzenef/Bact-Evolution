@@ -38,7 +38,7 @@ class Grid{
 // =====================================================================
 //                               Data members
 // =====================================================================
-  unordered_map<Coordinates,Cell> grid_;
+  unordered_map<int,Cell> grid_;
   unsigned int height_;
   unsigned int width_;
   float ainit_;

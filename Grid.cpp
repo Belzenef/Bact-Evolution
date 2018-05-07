@@ -7,7 +7,7 @@ Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, fl
   height_(height), width_(width), ainit_(ainit), pdeath_(pdeath), pmut_(pmut), raa_(raa), rab_(rab), rbb_(rbb), rbc_(rbc), d_(d), wmin_(wmin) {
   for(int x=0; x<width_; ++x){
     for(int y=0; y<height_; ++y){
-      grid_.emplace (Coordinate(x,y),Cell(ainit_,0,0,x,y) );
+      grid_.emplace (Coordinate(x,y).to_int(height_,width_),Cell(ainit_,0,0,x,y) );
     }     
   }
 }
@@ -51,7 +51,7 @@ void diffuse(){
         }
 
         my_cell=it.second;
-        other_cell=grid_.at( Coordinates(other_x,other_y) );
+        other_cell=grid_.at( Coordinates(other_x,other_y).to_int() );
 
         my_cell.seta( my_cell.a()+d_*other_cell.preva()-9*d_*my_cell.preva() );
         my_cell.setb( my_cell.b()+d_*other_cell.prevb()-9*d_*my_cell.prevb() );
