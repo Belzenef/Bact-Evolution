@@ -14,5 +14,7 @@ Cell::~Cell() = default;
 //                        Public Function members
 // =========================================================================
 void Cell::update(){
-	
+	preva_ = a_;
+	prevb_ = b_;
+	prevc_ = c_;
 }

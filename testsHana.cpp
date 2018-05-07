@@ -9,6 +9,22 @@ int main(int argc, char* argv[]){
 	//testing Cell default ctor
 	std::cout << "testing Cell default ctor" << std::endl;
 	Cell cell1(1.0,2.0,3.0, 1, 1);
-	
+	std::cout << "cell1 : " << std::endl;
+	std::cout << "a = " <<cell1.a() << std::endl;
+	std::cout << "b = " <<cell1.b() << std::endl;
+	std::cout << "c = " <<cell1.c() << std::endl;
+
+	std::cout << std::endl;
+
+	//testing update
+	std::cout << "testing update" << std::endl;	
+	cell1.seta(10.);
+	cell1.setb(20.);
+	cell1.setc(30.0);
+	std::cout << "cell1 after using update : " << std::endl;
+	std::cout << "a = " <<cell1.a() << std::endl;
+	std::cout << "b = " <<cell1.b() << std::endl;
+	std::cout << "c = " <<cell1.c() << std::endl;
+
 	return 0;
 }
