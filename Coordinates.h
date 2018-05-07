@@ -31,7 +31,7 @@ class Coordinates {
 //                           Public Function members
 // =====================================================================
   unsigned int to_int(unsigned int height, unsigned int width);
-  
+
   protected :
 // =====================================================================
 //                               Data members
@@ -44,7 +44,8 @@ class Coordinates {
 // =====================================================================
 //                                Inline definitions
 // =====================================================================
-inline unsigned int Coordinates::x() { return x_; }
-inline unsigned int Coordinates::y() { return y_; }
+
+inline unsigned int Coordinates::x() const{ return x_; }
+inline unsigned int Coordinates::y() const{ return y_; }
 
 #endif
