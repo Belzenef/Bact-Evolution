@@ -1,6 +1,8 @@
 #ifndef CELL_H_
 #define CELL_H_
 #include "Bacteria.h"
+#include "Ga.h"
+#include "Gb.h"
 
 class Cell{
  public :

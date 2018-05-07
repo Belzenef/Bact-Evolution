@@ -3,6 +3,7 @@
 #include "Cell.h"
 #include "Ga.h"
 #include "Gb.h"
+#include <cstdlib> 
 
 int main(int argc, char* argv[]){
 
@@ -25,6 +26,9 @@ int main(int argc, char* argv[]){
 	std::cout << "a = " <<cell1.a() << std::endl;
 	std::cout << "b = " <<cell1.b() << std::endl;
 	std::cout << "c = " <<cell1.c() << std::endl;
+
+	//cell1.die(.4);
+
 
 	return 0;
 }
