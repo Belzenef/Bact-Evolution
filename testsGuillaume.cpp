@@ -4,6 +4,6 @@
 #include "Bacteria.h"
 
 int main(int argc, char* argv[]){
-  Grid mygrid(5,6,0.5);
+  Grid mygrid(5,6,0.5,0.1,0.2);
   return 0;
 }

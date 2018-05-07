@@ -3,8 +3,8 @@
 //======================================================================
 //                              Constructors
 //======================================================================
-Grid::Grid(unsigned int height,unsigned int width, float ainit): 
-  height_(height), width_(width), ainit_(ainit) {
+Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, float pmut): 
+  height_(height), width_(width), ainit_(ainit), pdeath_(pdeath), pmut_(pmut) {
   int* coord;
   for(int x=0; x<height_; ++x){
     for(int y=0; y<width_; ++y){

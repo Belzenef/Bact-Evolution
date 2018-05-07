@@ -13,7 +13,7 @@ class Grid{
 //======================================================================
   Grid()=delete;
   Grid(const Grid& Grid)=delete;
-  Grid(unsigned int height,unsigned int width, float ainit);
+  Grid(unsigned int height,unsigned int width, float ainit, float pdeath, float pmut);
 //======================================================================
 //                              Destructors
 //======================================================================
@@ -35,6 +35,8 @@ class Grid{
   unsigned int height_;
   unsigned int width_;
   float ainit_;
+  float pdeath_;
+  float pmut_;
 
 // =====================================================================
 //                        Protected Function members
