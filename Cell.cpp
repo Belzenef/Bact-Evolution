@@ -3,8 +3,7 @@
 // =========================================================================
 //                               Constructors
 // =========================================================================
-Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y) : 
-	a_(a), b_(b), c_(c), preva_(a), prevb_(b), prevc_(c), x_(x), y_(y){}
+Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y): a_(a), b_(b), c_(c), preva_(a), prevb_(b), prevc_(c), x_(x), y_(y){}
 
 // =========================================================================
 //                                Destructor
@@ -15,5 +14,7 @@ Cell::~Cell() = default;
 //                        Public Function members
 // =========================================================================
 void Cell::update(){
-	
+	preva_ = a_;
+	prevb_ = b_;
+	prevc_ = c_;
 }

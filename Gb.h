@@ -26,6 +26,6 @@ class Gb : public Bacteria {
 // =====================================================================
 //                            Inline definitions
 // =====================================================================
-inline float Gb::getW() { return b_; }
+inline float Gb::getW() { return ((c_>=W_MIN)*c_); }
 
 #endif
