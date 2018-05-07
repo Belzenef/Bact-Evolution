@@ -51,6 +51,8 @@ class Cell{
 	float a_;
 	float b_;
 	float c_;
+
+  //the three last data members should be used only by Grid's diffuse().
   float preva_;
 	float prevb_;
 	float prevc_;
