@@ -4,8 +4,11 @@
 #include "Ga.h"
 #include "Gb.h"
 #include <cstdlib> 
+#include "Grid.h"
 
 int main(int argc, char* argv[]){
+
+//////////// Testing Cell //////////////////
 
 	//testing Cell default ctor
 	std::cout << "testing Cell default ctor" << std::endl;
@@ -35,8 +38,16 @@ int main(int argc, char* argv[]){
 	std::cout << "a = " <<cell1.a() << std::endl;
 	std::cout << "b = " <<cell1.b() << std::endl;
 	std::cout << "c = " <<cell1.c() << std::endl;
+	std::cout << "After using die and before setbacteriaA, cell1.bacteria() -> a() = " <<cell1.bacteria() -> a() << std::endl;
 	cell1.setbacteriaA(5., 6., 7.); //temporary solution in order to avoid a segmentation fault while waiting for Grid methods.
 	std::cout << "After using die and setbacteriaA, cell1.bacteria() -> a() = " <<cell1.bacteria() -> a() << std::endl;
+
+//////////// Testing Grid //////////////////
+	
+	//testing Reinit
+	std::cout << "testing Grid Reinit" << std::endl;
+	//Grid(2,2, 3., .4, .3, .6, .6, .6, .6, .7, .0001); to test later
+
 
 	return 0;
 }

@@ -7,7 +7,7 @@ Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, fl
   height_(height), width_(width), ainit_(ainit), pdeath_(pdeath), pmut_(pmut), raa_(raa), rab_(rab), rbb_(rbb), rbc_(rbc), d_(d), wmin_(wmin) {
   for(int x=0; x<width_; ++x){
     for(int y=0; y<height_; ++y){
-      grid_.emplace (Coordinate(x,y).to_int(height_,width_),Cell(ainit_,0,0,x,y) );
+      grid_.emplace (Coordinates(x,y).to_int(height_,width_),Cell(ainit_,0,0,x,y) );
     }     
   }
 }
@@ -20,9 +20,9 @@ Grid::~Grid(){
   }
 }
 // =====================================================================
-//                        Protected Function members
+//                        Public Function members
 // =====================================================================
-void diffuse(){
+void Grid::diffuse(){
   for ( auto it : grid_){
     it.second.update(); //prev_a_<-a_, prev_b_<-b, prev_c_<-c_
   }
@@ -59,5 +59,13 @@ void diffuse(){
       }
     }
   }
+}
+
+void Grid::reinit(float Ainit){
+	for ( auto it : grid_ ){
+		it.second.a()=Ainit;
+		it.second.b()=0;
+		it.second.c()=0;
+	}
 }
 
