@@ -2,6 +2,7 @@
 #define GRID
 
 #include <unordered_map>
+#include <vector>
 #include "Cell.h"
 #include "Coordinates.h"
 
@@ -31,9 +32,11 @@ class Grid{
 //                              Setters
 //======================================================================
 // =====================================================================
-//                        Protected Function members
+//                        Public Function members
 // =====================================================================
   void diffuse();
+  void compete();
+	void reinit(float Ainit);
   protected :
 
 // =====================================================================
@@ -55,7 +58,7 @@ class Grid{
 // =====================================================================
 //                        Protected Function members
 // =====================================================================
-
+  vector<Cell*> neighbours(unsigned int coordinates);
 
 };
 

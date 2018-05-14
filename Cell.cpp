@@ -26,7 +26,9 @@ Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y): a_(a), b_
 //                                Destructor
 // =========================================================================
 Cell::~Cell() {
-	delete bacteria_;
+  if (bacteria_!=nullptr){
+	  delete bacteria_;
+  }
 }
 
 // =========================================================================
@@ -38,24 +40,19 @@ void Cell::update(){
 	prevc_ = c_;
 }
 
-bool Cell::die(float pdeath, float wmin){
+void Cell::die(float pdeath, float wmin){
   if(bacteria_ -> getW() < wmin){ // testing fitness threshold
 		a_ += bacteria_ -> a();
 		b_ += bacteria_ -> b();
 		c_ += bacteria_ -> c();
-		update();
     delete bacteria_;
-		return true;
+    bacteria_=nullptr;
   } 
 	else if (((float) rand()/RAND_MAX )<pdeath){ // testing death propability
   	a_ += bacteria_ -> a();
 		b_ += bacteria_ -> b();
 		c_ += bacteria_ -> c();
-		update();
     delete bacteria_;
-		return true;
+    bacteria_=nullptr;
   } 
-	else {
-    return false;
-  }
 }
