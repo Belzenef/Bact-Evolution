@@ -44,7 +44,7 @@ class Cell{
 //                        Public Function members
 // =====================================================================
   void update();
-  bool die(float pdeath, float wmin); // tests whether the bacteria in this Cell is dead and deletes it, as well as returning a bool true, if it is the case. Returns a false otherwise.
+  void die(float pdeath, float wmin); // tests whether the bacteria in this Cell is dead and deletes it, as well as returning a bool true, if it is the case. Returns a false otherwise.
 
  protected :
 

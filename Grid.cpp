@@ -31,14 +31,14 @@ Grid::~Grid() {
     return grid_.at(key);
   }
 // =====================================================================
-//                        Protected Function members
+//                        Public Function members
 // =====================================================================
 void Grid::diffuse(){
   for ( auto it : grid_){
     it.second->update(); //prev_a_<-a_, prev_b_<-b, prev_c_<-c_
   }
   
-  int other_x, other_y; //cell from  which elements diffuse
+  /*int other_x, other_y; //cell from  which elements diffuse
   const Coordinates* my_coord;//cell in which we calculate the new elements' concentrations
   Cell* my_cell;
   const Cell* other_cell;
@@ -80,7 +80,62 @@ void Grid::diffuse(){
     my_cell->setc(my_cell->c()-9*d_*my_cell->prevc() );
   
     delete my_coord;
+  }*/
+  vector<Cell*> neighbours_list;
+  Cell* my_cell;
+  for ( auto it : grid_){
+    my_cell=it.second;
+    //fetch neighbours
+    neighbours_list=neighbours(it.first);
+
+    for (auto other_cell : neighbours_list){
+      //diffuse
+      my_cell->seta( my_cell->a()+d_*other_cell->preva() ); 
+      my_cell->setb( my_cell->b()+d_*other_cell->prevb() );
+      my_cell->setc( my_cell->c()+d_*other_cell->prevc() );
+    }
+  my_cell->seta(my_cell->a()-9*d_*my_cell->preva() );
+  my_cell->setb(my_cell->b()-9*d_*my_cell->prevb() );
+  my_cell->setc(my_cell->c()-9*d_*my_cell->prevc() );
   }
 }
+
+void Grid::compete(){
+  for ( auto it : grid_){ //check who is dead
+    it.second->die(pdeath_,wmin_); 
+    
+  }
+}
+// =====================================================================
+//                        Protected Function members
+// =====================================================================
+vector<Cell*> Grid::neighbours(unsigned int coordinates){
+  int other_x, other_y; //neighbour cell
+  Coordinates my_coord(coordinates,height_,width_) ;
+  vector<Cell*> neighbours_list;
+  for (int dx=-1; dx<=1; ++dx){
+    for (int dy=-1; dy<=1; ++dy){ 
+      other_x=my_coord.x()+dx;
+      other_y=my_coord.y()+dy;
+
+      //take care of the borders (our grid is a tore)
+      if( other_x==-1 ){
+        other_x=width_-1;
+      }else if( other_x==width_ ){
+        other_x=0;
+      }
+      if( other_y==-1 ){
+        other_y=height_-1;
+      }else if( other_y==height_ ){
+        other_y=0;
+      }
+
+      //add neighbour to the vector
+      neighbours_list.push_back( grid_.at( Coordinates(other_x,other_y).to_int(height_) ) );
+    }
+  } 
+  return neighbours_list;
+}
+
 
 
