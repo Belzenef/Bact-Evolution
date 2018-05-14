@@ -20,6 +20,11 @@ class Gb : public Bacteria {
 // =====================================================================
   float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt);
   inline float getW();
+  
+// =====================================================================
+//                       Definition of static attributes
+// =====================================================================
+	static unsigned int nbS_;
 
 };
 

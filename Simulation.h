@@ -20,16 +20,18 @@ class Simulation {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-	void run();
+	int run();
+	bool isExtinct();//tests whether the population is extinct (returns 1 if this is tha case)
+	unsigned int state();// tests whether the state is "extinction"(=0), "exclusion"(=1) or "cohabitation"(=2)
 
  protected :
 // =====================================================================
 //                               Data members
 // =====================================================================
-  float t_;
+  float T_;
   float tend_;
   float dt_;
-  Grid * grid;
+  Grid * grid_;
 };
 
 #endif
