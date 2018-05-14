@@ -82,7 +82,7 @@ void Grid::compete(){
           best_fitness= ( ( other_cell->bacteria() )->getW() );
         }
       }
-      best_neighbour->fill(my_cell);
+      best_neighbour->fill(my_cell,pmut_);
       cout<<"replaced";
     }
   }
