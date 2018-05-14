@@ -20,6 +20,11 @@ class Bacteria {
   inline float b() const;
   inline float c() const;
   
+//======================================================================
+//                              Setters
+//======================================================================
+  inline void setb(float b);
+  inline void setc(float c);
 // =====================================================================
 //                           Public Function members
 // =====================================================================
@@ -43,5 +48,7 @@ class Bacteria {
 inline float Bacteria::a() const { return a_; }
 inline float Bacteria::b() const { return b_; }
 inline float Bacteria::c() const { return c_; }
+inline void Bacteria::setb(float b){b_=b;}
+inline void Bacteria::setc(float c){c_=c;}
 
 #endif

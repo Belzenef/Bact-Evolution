@@ -9,6 +9,8 @@
 
 int main(int argc, char* argv[]){
 
+	srand(1); //seed used by rand
+
 //////////// Testing Cell //////////////////
 
 	//testing Cell default ctor
@@ -56,7 +58,7 @@ int main(int argc, char* argv[]){
 //////////// Testing Simulation //////////////////
 
 	//testing isExtinct
-	Simulation Simulation1(1, 1, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, .7, 10., .001); 
+	Simulation Simulation1(2, 2, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, .7, 10., .001); 
 
 
 	return 0;

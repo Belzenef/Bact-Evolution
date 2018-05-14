@@ -59,6 +59,7 @@ class Grid{
 //                        Protected Function members
 // =====================================================================
   vector<Cell*> neighbours(unsigned int coordinates);
+  vector<Cell*> alive_neighbours(unsigned int coordinates);
 
 };
 

@@ -1,4 +1,7 @@
 #include "Grid.h"
+#include<iostream>
+using std::cout;
+using std::endl;
 
 //======================================================================
 //                              Constructors
@@ -36,50 +39,6 @@ void Grid::diffuse(){
   for ( auto it : grid_){
     it.second->update(); //prev_a_<-a_, prev_b_<-b, prev_c_<-c_
   }
-  
-  /*int other_x, other_y; //cell from  which elements diffuse
-  const Coordinates* my_coord;//cell in which we calculate the new elements' concentrations
-  Cell* my_cell;
-  const Cell* other_cell;
-
-  for ( auto it : grid_){
-    my_coord=new Coordinates(it.first,height_,width_) ;
-    my_cell=it.second;
-    for (int dx=-1; dx<=1; ++dx){
-      for (int dy=-1; dy<=1; ++dy){ 
-        
-        other_x=my_coord->x()+dx;
-        other_y=my_coord->y()+dy;
-
-        //take care of the borders (our grid is a tore)
-        if( other_x==-1 ){
-          other_x=width_-1;
-        }else if( other_x==width_ ){
-          other_x=0;
-        }
-        if( other_y==-1 ){
-          other_y=height_-1;
-        }else if( other_y==height_ ){
-          other_y=0;
-        }
-
-        
-        other_cell= grid_.at( Coordinates(other_x,other_y).to_int(height_) ) ;
-     
-        //calculate and set new concentrations in my_cell
-        my_cell->seta( my_cell->a()+d_*other_cell->preva() ); 
-        my_cell->setb( my_cell->b()+d_*other_cell->prevb() );
-        my_cell->setc( my_cell->c()+d_*other_cell->prevc() );
-
-        
-      }
-    }
-    my_cell->seta(my_cell->a()-9*d_*my_cell->preva() );
-    my_cell->setb(my_cell->b()-9*d_*my_cell->prevb() );
-    my_cell->setc(my_cell->c()-9*d_*my_cell->prevc() );
-  
-    delete my_coord;
-  }*/
   vector<Cell*> neighbours_list;
   Cell* my_cell;
   for ( auto it : grid_){
@@ -102,7 +61,31 @@ void Grid::diffuse(){
 void Grid::compete(){
   for ( auto it : grid_){ //check who is dead
     it.second->die(pdeath_,wmin_); 
-    
+  }
+
+  vector<Cell*> neighbours_list;
+  Cell* my_cell;
+
+  for ( auto it : grid_){
+    my_cell=it.second;
+    if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
+      //TESTS
+  
+      cout<< "x:"<<(Coordinates(it.first,height_,width_)).x()<<" y:"<<(Coordinates(it.first,height_,width_)).y()<<" is dead"<<endl;
+      //fetch neighbours
+      neighbours_list=alive_neighbours(it.first);
+
+      Cell* best_neighbour;
+      unsigned int best_fitness=0;
+      for (auto other_cell : neighbours_list){
+        if ( ( ( other_cell->bacteria() )->getW() )>best_fitness ){
+          best_neighbour=other_cell;
+          best_fitness= ( ( other_cell->bacteria() )->getW() );
+        }
+      }
+      best_neighbour->fill(my_cell);
+      cout<<"replaced";
+    }
   }
 }
 // =====================================================================
@@ -110,6 +93,7 @@ void Grid::compete(){
 // =====================================================================
 vector<Cell*> Grid::neighbours(unsigned int coordinates){
   int other_x, other_y; //neighbour cell
+  Cell* other_cell;
   Coordinates my_coord(coordinates,height_,width_) ;
   vector<Cell*> neighbours_list;
   for (int dx=-1; dx<=1; ++dx){
@@ -130,7 +114,40 @@ vector<Cell*> Grid::neighbours(unsigned int coordinates){
       }
 
       //add neighbour to the vector
-      neighbours_list.push_back( grid_.at( Coordinates(other_x,other_y).to_int(height_) ) );
+      other_cell=grid_.at( Coordinates(other_x,other_y).to_int(height_) );
+      neighbours_list.push_back( other_cell );
+    }
+  } 
+  return neighbours_list;
+}
+
+vector<Cell*> Grid::alive_neighbours(unsigned int coordinates){ //same as neighbours with one "if" added
+  int other_x, other_y; //neighbour cell
+  Cell* other_cell;
+  Coordinates my_coord(coordinates,height_,width_) ;
+  vector<Cell*> neighbours_list;
+  for (int dx=-1; dx<=1; ++dx){
+    for (int dy=-1; dy<=1; ++dy){ 
+      other_x=my_coord.x()+dx;
+      other_y=my_coord.y()+dy;
+
+      //take care of the borders (our grid is a tore)
+      if( other_x==-1 ){
+        other_x=width_-1;
+      }else if( other_x==width_ ){
+        other_x=0;
+      }
+      if( other_y==-1 ){
+        other_y=height_-1;
+      }else if( other_y==height_ ){
+        other_y=0;
+      }
+
+      //add neighbour to the vector
+      other_cell=grid_.at( Coordinates(other_x,other_y).to_int(height_) );
+      if ( ( other_cell->bacteria() )!=nullptr ){
+        neighbours_list.push_back( other_cell );
+      }
     }
   } 
   return neighbours_list;

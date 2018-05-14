@@ -10,15 +10,14 @@
 // =========================================================================
 Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y): a_(a), b_(b), c_(c), preva_(a), prevb_(b), prevc_(c), x_(x), y_(y){
 	// creates a bacteria A or B with a 50 % probability to create each
-	srand(time(NULL));
 	int i = rand()%100 ;
 	if ( i < 50){
 		bacteria_= new Ga(a,b,c);
-		//std::cout << "A" << std::endl;
+		std::cout << "A" << std::endl;
 	}
 	else{
 		bacteria_ = new Gb(a, b, c);
-		//std::cout << "B" << std::endl;	
+		std::cout << "B" << std::endl;	
 	}
 }
 
@@ -34,6 +33,8 @@ Cell::~Cell() {
 // =========================================================================
 //                        Public Function members
 // =========================================================================
+void Cell::fill(Cell*){
+}
 void Cell::update(){
 	preva_ = a_;
 	prevb_ = b_;
@@ -42,6 +43,7 @@ void Cell::update(){
 
 void Cell::die(float pdeath, float wmin){
   if(bacteria_ -> getW() < wmin){ // testing fitness threshold
+    std::cout<<"threshold"<<std::endl;
 		a_ += bacteria_ -> a();
 		b_ += bacteria_ -> b();
 		c_ += bacteria_ -> c();
@@ -49,6 +51,7 @@ void Cell::die(float pdeath, float wmin){
     bacteria_=nullptr;
   } 
 	else if (((float) rand()/RAND_MAX )<pdeath){ // testing death propability
+    std::cout<<"random"<<std::endl;
   	a_ += bacteria_ -> a();
 		b_ += bacteria_ -> b();
 		c_ += bacteria_ -> c();
