@@ -5,13 +5,26 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-  Grid mygrid(5,6,0.5,0.1,0.2,1.,1.,1.,1.,0.1,10);
+  Grid mygrid(5,6,0.5,0.01,0.2,1.,1.,1.,1.,0.1,0.0);
   Cell* changed= mygrid.getcell(1,1);
-  changed->setb(0.8);
-  for(int k=0; k<100; ++k){
-    cout<< mygrid.getcell(2,2)->b() <<"  " << mygrid.getcell(1,1)->b() << "  " 
-    << mygrid.getcell(3,1)->b()<<endl;
-    mygrid.diffuse();
+  for (int line=0;line<5;++line){
+      for (int col=0;col<6;++col){
+        mygrid.getcell(col,line)->bacteria()->setb(0.5);
+        mygrid.getcell(col,line)->bacteria()->setc(0.5);
+      }
+  }
+  
+  for(int k=0; k<10; ++k){
+    mygrid.compete();
+    cout<<endl;
+    cout<<endl;
+    for (int line=0;line<5;++line){
+      for (int col=0;col<6;++col){
+      mygrid.getcell(col,line)->bacteria()->metabolize(0.1,0.1,mygrid.getcell(col,line)->a(),0.1,0.1,mygrid.getcell(col,line)->b(),0.1);
+        cout<<mygrid.getcell(col,line)->bacteria()->b()<<"   ";
+      }
+      cout<<endl;
+    }
   }
   
   return 0;

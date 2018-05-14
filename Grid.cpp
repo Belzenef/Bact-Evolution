@@ -1,4 +1,7 @@
 #include "Grid.h"
+#include<iostream>
+using std::cout;
+using std::endl;
 
 //======================================================================
 //                              Constructors
@@ -62,9 +65,13 @@ void Grid::compete(){
 
   vector<Cell*> neighbours_list;
   Cell* my_cell;
+
   for ( auto it : grid_){
     my_cell=it.second;
     if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
+      //TESTS
+  
+      cout<< "x:"<<(Coordinates(it.first,height_,width_)).x()<<" y:"<<(Coordinates(it.first,height_,width_)).y()<<" is dead"<<endl;
       //fetch neighbours
       neighbours_list=alive_neighbours(it.first);
 
@@ -77,6 +84,7 @@ void Grid::compete(){
         }
       }
       best_neighbour->fill(my_cell);
+      cout<<"replaced";
     }
   }
 }

@@ -44,6 +44,7 @@ void Cell::update(){
 
 void Cell::die(float pdeath, float wmin){
   if(bacteria_ -> getW() < wmin){ // testing fitness threshold
+    std::cout<<"threshold"<<std::endl;
 		a_ += bacteria_ -> a();
 		b_ += bacteria_ -> b();
 		c_ += bacteria_ -> c();
@@ -51,6 +52,7 @@ void Cell::die(float pdeath, float wmin){
     bacteria_=nullptr;
   } 
 	else if (((float) rand()/RAND_MAX )<pdeath){ // testing death propability
+    std::cout<<"random"<<std::endl;
   	a_ += bacteria_ -> a();
 		b_ += bacteria_ -> b();
 		c_ += bacteria_ -> c();
