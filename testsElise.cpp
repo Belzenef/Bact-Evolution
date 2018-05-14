@@ -8,18 +8,20 @@
 
 int main(int argc, char* argv[]){
 	std::cout << "Testing creation of bacterias (Ga et Gb)" << std::endl;
-	Gb bactB(1.0,2.0,3.0);
-	Ga bactA(1.0,0.3,3.0);
+	Gb * bactB = new Gb(1.0,2.0,3.0);
+	Ga * bactA = new Ga(1.0,0.3,3.0);
+	std::cout << "Number of Ga instances (L bacteria) : " << bactA->nbL() << std::endl;
+	std::cout << "Number of Gb instances (S bacteria) : " << bactB->nbS() << std::endl;
 	
 	std::cout << "\nTesting getW()" << std::endl;
-	std::cout << "Ga bacteria : " << bactA.getW() << std::endl;
-	std::cout << "Gb bacteria : " << bactB.getW() << std::endl;
+	std::cout << "Ga bacteria : " << bactA->getW() << std::endl;
+	std::cout << "Gb bacteria : " << bactB->getW() << std::endl;
 	
 	std::cout << "\nTesting metabolize()" << std::endl;
-	bactA.metabolize(0.1,0.1,0.1,0.1,0.1,0.1,0.1);
-	bactB.metabolize(0.1,0.1,0.1,0.1,0.1,0.1,0.1);
-	std::cout << "Ga bacteria : " << bactA.getW() << std::endl;
-	std::cout << "Gb bacteria : " << bactB.getW() << std::endl;
+	bactA->metabolize(0.1,0.1,0.1,0.1,0.1,0.1,0.1);
+	bactB->metabolize(0.1,0.1,0.1,0.1,0.1,0.1,0.1);
+	std::cout << "Ga bacteria : " << bactA->getW() << std::endl;
+	std::cout << "Gb bacteria : " << bactB->getW() << std::endl;
 	
 	std::cout << "\nTesting coordinates()" << std::endl;
 	Coordinates c0(0,0);
@@ -34,6 +36,11 @@ int main(int argc, char* argv[]){
 	std::cout << "(1,0) ==> " << c2.to_int(5)<< std::endl;
 	std::cout << "9 ==> " << c3.x() << " " << c3.y() << std::endl;
 	std::cout << "13 ==> " << c4.x() << " " << c4.y()<< std::endl;
+	
+	delete bactB;
+	delete bactA;
+	std::cout << "\nNumber of Ga instances (L bacteria) : " << bactA->nbL() << std::endl;
+	std::cout << "Number of Gb instances (S bacteria) : " << bactB->nbS() << std::endl;
 	
 	return 0;
 }

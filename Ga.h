@@ -20,6 +20,12 @@ class Ga : public Bacteria {
 // =====================================================================
   float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt);
   inline float getW();
+  inline unsigned int nbL() const;
+  
+// =====================================================================
+//                       Definition of static attributes
+// =====================================================================
+	static unsigned int nbL_;
   
 };
 
@@ -27,6 +33,7 @@ class Ga : public Bacteria {
 //                            Inline definitions
 // =====================================================================
 inline float Ga::getW() { return b_; }
+inline unsigned int Ga::nbL() const { return nbL_; }
 
 #endif
 
