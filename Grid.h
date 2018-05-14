@@ -2,6 +2,7 @@
 #define GRID
 
 #include <unordered_map>
+#include <memory>
 #include <vector>
 #include "Cell.h"
 #include "Coordinates.h"

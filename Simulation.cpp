@@ -1,6 +1,4 @@
 #include "Simulation.h"
-#include "Ga.h"
-#include "Gb.h"
 
 // =====================================================================
 //                                Constructors
@@ -24,7 +22,7 @@ Simulation::~Simulation(){
 //                           Public Function members
 // =====================================================================
 int Simulation::run(){
-		int time=0;
+		/*int time=0;
     while(time<tend_){
       grid_->diffuse();
       grid_->compete();
@@ -36,15 +34,20 @@ int Simulation::run(){
       if(Gb::nbS_==0) { return 0; } // extinction
       else { return 1; } // exclusion
     } else { return 2; } // cohabitation
+    */
+    return 0;
 }
 
 bool Simulation::isExtinct(){
-	if (Ga::nbL_ == 0 & Gb::nbS_ == 0){
+	/*if (Ga::nbL_ == 0 & Gb::nbS_ == 0){
 		return 1;	
 	}
 	else {return 0;}
+  */
+  return 0;
 } 
 
-//unsigned int state(){
+unsigned int state(){
 //	if ()
-//}
+  return 0;
+}

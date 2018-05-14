@@ -2,6 +2,8 @@
 #define SIMUL_H
 
 #include "Grid.h"
+#include "Ga.h"
+#include "Gb.h"
 
 class Simulation {
  public :
@@ -21,8 +23,8 @@ class Simulation {
 //                           Public Function members
 // =====================================================================
 	int run();
-	bool isExtinct();//tests whether the population is extinct (returns 1 if this is tha case)
-	unsigned int state();// tests whether the state is "extinction"(=0), "exclusion"(=1) or "cohabitation"(=2)
+	bool isExtinct(); // tests whether the population is extinct (returns 1 if this is tha case)
+	unsigned int state(); // tests whether the state is "extinction"(=0), "exclusion"(=1) or "cohabitation"(=2)
 
  protected :
 // =====================================================================
