@@ -29,6 +29,7 @@ class Grid{
 //======================================================================
   //JUST FOR TESTS
   Cell* getcell(int x, int y);
+  inline unsigned int height();
 //======================================================================
 //                              Setters
 //======================================================================
@@ -63,5 +64,8 @@ class Grid{
   vector<Cell*> alive_neighbours(unsigned int coordinates);
 
 };
-
+// =====================================================================
+//                        Protected Function members
+// =====================================================================
+inline unsigned int Grid::height(){return height_;}
 #endif

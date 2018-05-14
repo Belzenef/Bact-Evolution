@@ -7,7 +7,7 @@ using std::endl;
 //                              Constructors
 //======================================================================
 Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, float pmut, float raa, float rab, float rbb, float rbc, float d, float wmin): 
-  height_(height), width_(width), ainit_(ainit), pdeath_(pdeath), pmut_(pmut), raa_(raa), rab_(rab), rbb_(rbb), rbc_(rbc), d_(d), wmin_(wmin) {
+   height_(height), width_(width), ainit_(ainit), pdeath_(pdeath), pmut_(pmut), raa_(raa), rab_(rab), rbb_(rbb), rbc_(rbc), d_(d), wmin_(wmin) {
   for(int x=0; x<width_; ++x){
     for(int y=0; y<height_; ++y){
       grid_[Coordinates(x,y).to_int(height_)] = new Cell(ainit_,0,0,x,y);
