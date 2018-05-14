@@ -22,7 +22,6 @@ Gb::~Gb(){
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-
 float Gb::metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt){
 	float i=0;
   while(i<1.0){

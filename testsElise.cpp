@@ -13,6 +13,10 @@ int main(int argc, char* argv[]){
 	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
 	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
 	
+	std::cout << "Testing function isGa()" << std::endl;
+	std::cout << "isGa bactA ? " << bactA->isGa() << std::endl;
+	std::cout << "isGa bactB ? " << bactB->isGa() << std::endl;
+	
 	std::cout << "\nTesting getW()" << std::endl;
 	std::cout << "Ga bacteria : " << bactA->getW() << std::endl;
 	std::cout << "Gb bacteria : " << bactB->getW() << std::endl;
@@ -38,7 +42,7 @@ int main(int argc, char* argv[]){
 	std::cout << "13 ==> " << c4.x() << " " << c4.y()<< std::endl;
 	
 	std::cout << "\nTesting creation of instance Simulation : " << std::endl;
-	Simulation sim(2,2,3.,.6,.4,.6,.6,.6,.6,.6,.6,.7,10.,.001);
+	//Simulation sim(2,2,3.,.6,.4,.6,.6,.6,.6,.6,.6,.7,10.,.001);
 	std::cout << "\nNumber of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
 	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
 	
