@@ -1,4 +1,6 @@
 #include "Simulation.h"
+#include "Ga.h"
+#include "Gb.h"
 
 // =====================================================================
 //                                Constructors
@@ -36,3 +38,14 @@ int Simulation::run(){
       else { return 1; } // exclusion
     } else { return 2; } // cohabitation
 }
+
+bool Simulation::isExtinct(){
+	if (Ga::nbL_ == 0 & Gb::nbS_ == 0){
+		return 1;	
+	}
+	else {return 0;}
+} 
+
+//unsigned int state(){
+//	if ()
+//}
