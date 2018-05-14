@@ -85,9 +85,9 @@ void Grid::diffuse(){
 
 void Grid::reinit(float Ainit){
 	for ( auto it : grid_ ){
-		it.second.a()=Ainit;
-		it.second.b()=0;
-		it.second.c()=0;
+		it.second -> seta(Ainit);
+		it.second -> setb(0);
+		it.second -> setc(0);
 	}
 }
 

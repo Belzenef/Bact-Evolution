@@ -46,7 +46,13 @@ int main(int argc, char* argv[]){
 	
 	//testing Reinit
 	std::cout << "testing Grid Reinit" << std::endl;
-	//Grid(2,2, 3., .4, .3, .6, .6, .6, .6, .7, .0001); to test later
+	Grid Grid1(2,2, 3., .4, .3, .6, .6, .6, .6, .7, .0001);
+	std::cout << "Before reinit : " << Grid1.getcell(1,1) -> a() << std::endl;
+
+	Grid1.reinit(30.);
+	std::cout << "After reinit : " << Grid1.getcell(1,1) -> a() << std::endl;	
+
+
 
 
 	return 0;
