@@ -15,9 +15,17 @@ int main(int argc, char* argv[]){
   }
   
   for(int k=0; k<10; ++k){
+cout<<"-------------------------------";
     mygrid.compete();
     cout<<endl;
     cout<<endl;
+for (int line=0;line<5;++line){
+      for (int col=0;col<6;++col){
+        cout<<mygrid.getcell(col,line)->bacteria()->b()<<"   ";
+      }
+      cout<<endl;
+cout<<endl;
+    }
     for (int line=0;line<5;++line){
       for (int col=0;col<6;++col){
       mygrid.getcell(col,line)->bacteria()->metabolize(0.1,0.1,mygrid.getcell(col,line)->a(),0.1,0.1,mygrid.getcell(col,line)->b(),0.1);
@@ -26,6 +34,10 @@ int main(int argc, char* argv[]){
       cout<<endl;
     }
   }
+
+Grid* test=new Grid(2,2,0.5,0.01,0.2,1.,1.,1.,1.,0.1,0.0);
+
+delete test;
   
   return 0;
 }
