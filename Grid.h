@@ -37,6 +37,8 @@ class Grid{
   void diffuse();
   void compete();
 	void reinit(float Ainit);
+	void metabolize(float dt);
+
   protected :
 
 // =====================================================================

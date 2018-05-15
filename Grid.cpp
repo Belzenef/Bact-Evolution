@@ -88,6 +88,14 @@ void Grid::compete(){
     }
   }
 }
+
+void Grid::metabolize(float dt){
+	float out=0.;
+	for (auto it : grid_){
+		out = ((it.second)->bacteria())->metabolize(raa_, rab_, it.second->a , rbb_, rbc_, it.second->b, float dt);
+	}
+}
+
 // =====================================================================
 //                        Protected Function members
 // =====================================================================
