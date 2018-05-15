@@ -19,7 +19,8 @@ class Ga : public Bacteria {
 //                           Public Function members
 // =====================================================================
   float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt);
-  inline float getW();
+  inline float getW() override;
+  inline bool isGa() const override;
 
 // =====================================================================
 //                       Definition of static attributes
@@ -32,6 +33,7 @@ class Ga : public Bacteria {
 //                            Inline definitions
 // =====================================================================
 inline float Ga::getW() { return b_; }
+inline bool Ga::isGa() const { return true; }
 
 #endif
 

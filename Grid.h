@@ -2,6 +2,7 @@
 #define GRID
 
 #include <unordered_map>
+#include <memory>
 #include <vector>
 #include "Cell.h"
 #include "Coordinates.h"
@@ -28,6 +29,7 @@ class Grid{
 //======================================================================
   //JUST FOR TESTS
   Cell* getcell(int x, int y);
+  inline unsigned int height();
 //======================================================================
 //                              Setters
 //======================================================================
@@ -64,5 +66,8 @@ class Grid{
   vector<Cell*> alive_neighbours(unsigned int coordinates);
 
 };
-
+// =====================================================================
+//                        Protected Function members
+// =====================================================================
+inline unsigned int Grid::height(){return height_;}
 #endif
