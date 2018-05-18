@@ -37,8 +37,11 @@ class Grid{
 //                        Public Function members
 // =====================================================================
   void diffuse();
-  bool compete(); //return false if extinction
-	void reinit(float Ainit);
+
+  void compete();//return false if extinction
+	void metabolize(float dt);
+	void reinit();
+
   protected :
 
 // =====================================================================

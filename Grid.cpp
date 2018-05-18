@@ -61,6 +61,7 @@ bool Grid::compete(){ //return false if extinction
   for ( auto it : grid_){ //check who is dead
     it.second->die(pdeath_,wmin_); 
   }
+
   
   if (not isExtinct()){
     vector<Cell*> neighbours_list;
@@ -90,6 +91,24 @@ bool Grid::compete(){ //return false if extinction
     return false;
   }
 }
+
+void Grid::metabolize(float dt){
+	float out=0.;
+	for (auto it : grid_){
+		out = ((it.second)->bacteria())->metabolize(raa_, rab_, it.second->a() , rbb_, rbc_, it.second->b(), dt);
+	
+	//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Aout	
+	if ( ((it.second) -> bacteria())->isGa()){
+			it.second->seta(out);
+		}
+
+	//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Bout		
+	else{
+			it.second->setb(out);
+		}
+	}
+}
+
 // =====================================================================
 //                        Protected Function members
 // =====================================================================
@@ -157,9 +176,9 @@ vector<Cell*> Grid::alive_neighbours(unsigned int coordinates){ //same as neighb
 
 
 
-void Grid::reinit(float Ainit){
+void Grid::reinit(){
 	for ( auto it : grid_ ){
-		it.second -> seta(Ainit);
+		it.second -> seta(ainit_);
 		it.second -> setb(0);
 		it.second -> setc(0);
 	}
