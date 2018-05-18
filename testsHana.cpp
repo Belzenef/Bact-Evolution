@@ -55,6 +55,10 @@ int main(int argc, char* argv[]){
 	Grid1.reinit(30.);
 	std::cout << "After reinit : " << Grid1.getcell(1,1) -> a() << std::endl;	
 
+	//testing metabolize
+	std::cout << "testing Grid metabolize" << std::endl;
+	
+
 //////////// Testing Simulation //////////////////
 
 	//testing isExtinct
@@ -65,6 +69,7 @@ int main(int argc, char* argv[]){
 	//Simulation Simulation1(2, 2, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, .7, 10., .001); 
 	//Grid * test3 = new Grid(2,2, 3., .4, .3, .6, .6, .6, .6, .7, .0001);
 	//delete test3;
+
 
 
 	return 0;
