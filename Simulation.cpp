@@ -1,5 +1,6 @@
 #include "Simulation.h"
 #include <iostream>
+#include <math.h>
 
 // =====================================================================
 //                                Constructors
@@ -23,9 +24,9 @@ Simulation::~Simulation(){
 //                           Public Function members
 // =====================================================================
 int Simulation::run(){
-		unsigned int time=0;
+		float time=0;
     while(time<tend_){
-      if(time%T_==0.){ //Changing culture every T
+      if(((int)floor(time))%T_==0.){ //Changing culture every T
         grid_->reinit();
       }
       grid_->diffuse();
