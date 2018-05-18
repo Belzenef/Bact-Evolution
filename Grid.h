@@ -37,7 +37,7 @@ class Grid{
 //                        Public Function members
 // =====================================================================
   void diffuse();
-  void compete();
+  bool compete(); //return false if extinction
 	void reinit(float Ainit);
   protected :
 
@@ -62,6 +62,7 @@ class Grid{
 // =====================================================================
   vector<Cell*> neighbours(unsigned int coordinates);
   vector<Cell*> alive_neighbours(unsigned int coordinates);
+  bool isExtinct(); // tests whether the population is extinct (returns 1 if this is the case)
 
 };
 // =====================================================================
