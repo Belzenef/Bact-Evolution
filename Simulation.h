@@ -28,7 +28,7 @@ class Simulation {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-	int run();
+	float run();
 	
 	unsigned int state(); // tests whether the state is "extinction"(=0), "exclusion"(=1) or "cohabitation"(=2)
 

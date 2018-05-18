@@ -23,7 +23,7 @@ Simulation::~Simulation(){
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-int Simulation::run(){
+float Simulation::run(){
 		float time=0;
     while(time<tend_){
       if(((int)floor(time))%T_==0.){ //Changing culture every T
@@ -36,10 +36,17 @@ int Simulation::run(){
       time+=dt_;
     }
     if(Gb::nbS_==0){
-      if(Ga::nbL_==0) { return 0; } // extinction
-      else { return 1; } // exclusion
+      if(Ga::nbL_==0) { 
+        std::cout<< "extinction" << std::endl;
+        return -1.; 
+        } else { 
+          std::cout<< "exclusion" << std::endl;
+          return 0.; 
+        } 
+    } else { 
+      std::cout<< "cohabitation" << std::endl;
+      return (Gb::nbS_/Ga::nbL_); 
     } 
-		else { return 2; } // cohabitation
 }
 
 
