@@ -13,11 +13,11 @@ Cell::Cell(float a, float b, float c, unsigned int x, unsigned int y): a_(a), b_
 	int i = rand()%100 ;
 	if ( i < 50){
 		bacteria_= new Ga(a,b,c);
-		std::cout << "A" << std::endl;
+		//std::cout << "A" << std::endl;
 	}
 	else{
 		bacteria_ = new Gb(a, b, c);
-		std::cout << "B" << std::endl;	
+		//std::cout << "B" << std::endl;	
 	}
 }
 
