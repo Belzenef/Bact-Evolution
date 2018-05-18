@@ -41,10 +41,5 @@ int Simulation::run(){
     } else { return 2; } // cohabitation
 }
 
-bool Simulation::isExtinct(){
-	if (Ga::nbL_ == 0 and Gb::nbS_ == 0){
-		return 1;	
-	}
-	else {return 0;}
-} 
+
 

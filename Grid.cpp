@@ -57,31 +57,38 @@ void Grid::diffuse(){
   }
 }
 
-void Grid::compete(){
+bool Grid::compete(){ //return false if extinction
   for ( auto it : grid_){ //check who is dead
     it.second->die(pdeath_,wmin_); 
   }
 
-  vector<Cell*> neighbours_list;
-  Cell* my_cell;
+  
+  if (not isExtinct()){
+    vector<Cell*> neighbours_list;
+    Cell* my_cell;
 
-  for ( auto it : grid_){
-    my_cell=it.second;
-    if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
-	//fetch neighbours
-      neighbours_list=alive_neighbours(it.first);
+    for ( auto it : grid_){
+      my_cell=it.second;
+      if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
 
-      Cell* best_neighbour;
-      unsigned int best_fitness=0;
-      for (auto other_cell : neighbours_list){
-        if ( ( ( other_cell->bacteria() )->getW() )>best_fitness ){
-          best_neighbour=other_cell;
-          best_fitness= ( ( other_cell->bacteria() )->getW() );
+        //fetch neighbours
+        neighbours_list=alive_neighbours(it.first);
+        if (neighbours_list.size()!=0){
+          Cell* best_neighbour;
+          unsigned int best_fitness=0;
+          for (auto other_cell : neighbours_list){
+            if ( ( ( other_cell->bacteria() )->getW() )>best_fitness ){
+              best_neighbour=other_cell;
+              best_fitness= ( ( other_cell->bacteria() )->getW() );
+            }
+          }
+          best_neighbour->fill(my_cell,pmut_);
         }
       }
-      best_neighbour->fill(my_cell,pmut_);
-      cout<<"replaced";
     }
+    return true;
+  }else{
+    return false;
   }
 }
 
@@ -176,5 +183,12 @@ void Grid::reinit(){
 		it.second -> setc(0);
 	}
 }
+
+bool Grid::isExtinct(){
+	if (Ga::nbL_ == 0 & Gb::nbS_ == 0){
+		return 1;	
+	}
+	else {return 0;}
+} 
 
 
