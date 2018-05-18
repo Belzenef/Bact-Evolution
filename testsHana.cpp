@@ -9,7 +9,7 @@
 
 int main(int argc, char* argv[]){
 
-	srand(1); //seed used by rand
+	srand(3); //seed used by rand (	we'll have to use srand(time(NULL)) eventually)
 
 //////////// Testing Cell //////////////////
 
@@ -71,11 +71,7 @@ int main(int argc, char* argv[]){
 
 	//testing run() 
 	std::cout << "testing Grid simulation" << std::endl;
-	Grid * test = new Grid(2,2, 3., .4, .3, .6, .6, .6, .3, .7, .0001);
-	delete test;
-	Cell * test2 = new Cell(1.0,2.0,3.0, 1, 1);
-	delete test2;
-	Simulation Simulation1(2, 2, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, 3, 2, 1.);
+	Simulation Simulation1(2, 2, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, 3, 2, .5);
 	std::cout << "number of Ga instances : " << Ga::nbL_ << std ::endl;
 	std::cout << "number of Gb instances : " << Gb::nbS_ << std ::endl;
 	std::cout<< "Simulation1.run()= " << Simulation1.run() <<std::endl;
