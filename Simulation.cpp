@@ -29,10 +29,10 @@ int Simulation::run(){
         grid_->reinit();
       }
       grid_->diffuse();
-      grid_->compete();
+      //grid_->compete();
       std::cout<<"ok"<<std::endl;
       if(isExtinct()){break;}
-      //grid_->metabolize();
+      grid_->metabolize(dt_);
       time+=dt_;
     }
     if(Ga::nbL_==0){

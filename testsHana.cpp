@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
 	Grid Grid1(2,2, 3., .4, .3, .6, .6, .6, .6, .7, .0001);
 	std::cout << "Before reinit : " << Grid1.getcell(1,1) -> a() << std::endl;
 
-	Grid1.reinit(30.);
+	Grid1.reinit();
 	std::cout << "After reinit : " << Grid1.getcell(1,1) -> a() << std::endl;	
 
 	//testing metabolize
@@ -69,12 +69,18 @@ int main(int argc, char* argv[]){
 
 //////////// Testing Simulation //////////////////
 
-	//testing isExtinct
-	Grid * test = new Grid(2,2, 3., .4, .3, .6, .6, .6, .6, .7, .0001);
+	//testing run() 
+	std::cout << "testing Grid metabolize" << std::endl;
+	Grid * test = new Grid(2,2, 3., .4, .3, .6, .6, .6, .3, .7, .0001);
 	delete test;
 	Cell * test2 = new Cell(1.0,2.0,3.0, 1, 1);
 	delete test2;
-	//Simulation Simulation1(2, 2, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, .7, 10., .001); 
+	Simulation Simulation1(2, 2, 3.,.6, .4, .6, .6, .6,	.6, .6, .6, 3, 2, 1.);
+	std::cout << "number of Ga instances : " << Ga::nbL_ << std ::endl;
+	std::cout << "number of Gb instances : " << Gb::nbS_ << std ::endl;
+	std::cout<< "Simulation1.run()= " << Simulation1.run() <<std::endl;
+	std::cout << "After Simulation1.run(), number of Ga instances : " << Ga::nbL_ << std ::endl;
+	std::cout << "number of Gb instances : " << Gb::nbS_ << std ::endl;
 	
 
 
