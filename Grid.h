@@ -39,7 +39,7 @@ class Grid{
 // =====================================================================
   void diffuse();
   bool compete();//return false if extinction
-	void metabolize(float dt);
+	void metabolize(float dt);//runs Bacteria::metabolize for each alive bacteria of the Grid.
 	void reinit();
 
   protected :
