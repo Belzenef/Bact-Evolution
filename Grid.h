@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include<algorithm>
 #include "Cell.h"
 #include "Coordinates.h"
 
@@ -37,7 +38,6 @@ class Grid{
 //                        Public Function members
 // =====================================================================
   void diffuse();
-
   bool compete();//return false if extinction
 	void metabolize(float dt);
 	void reinit();
@@ -48,6 +48,7 @@ class Grid{
 //                               Data members
 // =====================================================================
   unordered_map<int,Cell*> grid_;
+  vector<int> keys_;
   unsigned int height_;
   unsigned int width_;
   float ainit_;
