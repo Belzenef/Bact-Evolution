@@ -38,7 +38,7 @@ class Grid{
 // =====================================================================
   void diffuse();
 
-  void compete();//return false if extinction
+  bool compete();//return false if extinction
 	void metabolize(float dt);
 	void reinit();
 
