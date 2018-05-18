@@ -30,7 +30,7 @@ class Bacteria {
 // =====================================================================
   virtual float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt) = 0;
   virtual float getW() = 0;
-  virtual inline bool isGa() const = 0;
+  virtual bool isGa() const = 0;
 
 
  protected :
