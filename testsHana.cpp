@@ -70,7 +70,7 @@ int main(int argc, char* argv[]){
 //////////// Testing Simulation //////////////////
 
 	//testing run() 
-	std::cout << "testing Grid metabolize" << std::endl;
+	std::cout << "testing Grid simulation" << std::endl;
 	Grid * test = new Grid(2,2, 3., .4, .3, .6, .6, .6, .3, .7, .0001);
 	delete test;
 	Cell * test2 = new Cell(1.0,2.0,3.0, 1, 1);
