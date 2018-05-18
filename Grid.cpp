@@ -58,6 +58,7 @@ void Grid::diffuse(){
 }
 
 bool Grid::compete(){ //return false if extinction
+
   for ( auto it : grid_){ //check who is dead
     it.second->die(pdeath_,wmin_); 
   }
