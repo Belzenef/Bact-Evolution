@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
 	std::cout << "13 ==> " << c4.x() << " " << c4.y()<< std::endl;
 	
 	std::cout << "\nTesting creation of instance Grid : " << std::endl;
-	Grid * grid=new Grid(2,2,3.,.6,.4,.6,.6,.6,10,30,.6);
+	Grid * grid=new Grid(2,2,3.,.6,.4,.6,.6,.6,.6,.6,.6);
 	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
 	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
 	

@@ -34,8 +34,8 @@ int Simulation::run(){
       grid_->metabolize(dt_);
       time+=dt_;
     }
-    if(Ga::nbL_==0){
-      if(Gb::nbS_==0) { return 0; } // extinction
+    if(Gb::nbS_==0){
+      if(Ga::nbL_==0) { return 0; } // extinction
       else { return 1; } // exclusion
     } 
 		else { return 2; } // cohabitation
