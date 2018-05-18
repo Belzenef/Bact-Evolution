@@ -29,16 +29,16 @@ int Simulation::run(){
         grid_->reinit();
       }
       grid_->diffuse();
-      //grid_->compete();
       std::cout<<"ok"<<std::endl;
-      if(isExtinct()){break;}
+      if(not grid_->compete()){break;}
       grid_->metabolize(dt_);
       time+=dt_;
     }
     if(Ga::nbL_==0){
       if(Gb::nbS_==0) { return 0; } // extinction
       else { return 1; } // exclusion
-    } else { return 2; } // cohabitation
+    } 
+		else { return 2; } // cohabitation
 }
 
 
