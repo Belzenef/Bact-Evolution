@@ -95,16 +95,18 @@ bool Grid::compete(){ //return false if extinction
 void Grid::metabolize(float dt){
 	float out=0.;
 	for (auto it : grid_){
-		out = ((it.second)->bacteria())->metabolize(raa_, rab_, it.second->a() , rbb_, rbc_, it.second->b(), dt);
+		if (not (it.second->bacteria()==nullptr)){
+			out = ((it.second)->bacteria())->metabolize(raa_, rab_, it.second->a() , rbb_, rbc_, it.second->b(), dt);
 	
-	//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Aout	
-	if ( ((it.second) -> bacteria())->isGa()){
-			it.second->seta(out);
-		}
-
-	//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Bout		
-	else{
-			it.second->setb(out);
+			//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Aout	
+			if ( ((it.second) -> bacteria())->isGa()){
+					it.second->seta(out);
+			}
+	
+			//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Bout		
+			else{
+					it.second->setb(out);
+			}
 		}
 	}
 }
