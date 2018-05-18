@@ -45,7 +45,7 @@ float Simulation::run(){
         } 
     } else { 
       std::cout<< "cohabitation" << std::endl;
-      return (Gb::nbS_/Ga::nbL_); 
+      return (Gb::nbS_/Ga::nbL_; 
     } 
 }
 
