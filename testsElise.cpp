@@ -42,25 +42,24 @@ int main(int argc, char* argv[]){
 	std::cout << "13 ==> " << c4.x() << " " << c4.y()<< std::endl;
 	
 	std::cout << "\nTesting creation of instance Grid : " << std::endl;
-	Grid * grid=new Grid(2,2,3.,.6,.4,.6,.6,.6,10,30,.6);
+	Grid * grid=new Grid(2,2,3.,.6,.4,.6,.6,.6,.6,.6,.6);
 	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
 	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
-	
-	std::cout << "\nTesting creation of instance Simulation : " << std::endl;
-	Simulation * sim = new Simulation(5,5,3.,.6,.4,.6,.6,.6,.6,.6,.6,10,30,.001);
-	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
-	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
-
-	std::cout << "\nTesting isExtinct() : " << std::endl;
-	std::cout << sim->isExtinct() << std::endl;
-	
-	std::cout << "\nTesting run() : " << std::endl;
-	sim->run();
 	
 	std::cout << "\nDeleting instances : " << std::endl;
 	delete bactB;
 	delete bactA;
 	delete grid;
+	
+	std::cout << "\nTesting creation of instance Simulation : " << std::endl;
+	Simulation * sim = new Simulation(5,5,3.,.6,.4,.6,.6,.6,.6,.6,.6,10,30,.001);
+	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
+	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
+	
+	std::cout << "\nTesting run() : " << std::endl;
+	std::cout << sim->run() << std::endl;
+	
+	std::cout << "\nDeleting instances" << std::endl;
 	delete sim;
 	std::cout << "\nNumber of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
 	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
