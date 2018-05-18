@@ -68,10 +68,7 @@ void Grid::compete(){
   for ( auto it : grid_){
     my_cell=it.second;
     if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
-      //TESTS
-  
-      cout<< "x:"<<(Coordinates(it.first,height_,width_)).x()<<" y:"<<(Coordinates(it.first,height_,width_)).y()<<" is dead"<<endl;
-      //fetch neighbours
+	//fetch neighbours
       neighbours_list=alive_neighbours(it.first);
 
       Cell* best_neighbour;
@@ -154,9 +151,9 @@ vector<Cell*> Grid::alive_neighbours(unsigned int coordinates){ //same as neighb
 
 
 
-void Grid::reinit(float Ainit){
+void Grid::reinit(){
 	for ( auto it : grid_ ){
-		it.second -> seta(Ainit);
+		it.second -> seta(ainit_);
 		it.second -> setb(0);
 		it.second -> setc(0);
 	}
