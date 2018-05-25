@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
+#include <string>
 #include "Cell.h"
 #include "Coordinates.h"
 
@@ -41,6 +42,7 @@ class Grid{
   bool compete();//return false if extinction
 	void metabolize(float dt);//runs Bacteria::metabolize for each alive bacteria of the Grid.
 	void reinit();
+  string toString();
 
   protected :
 

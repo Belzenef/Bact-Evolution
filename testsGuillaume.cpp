@@ -13,6 +13,8 @@ int main(int argc, char* argv[]){
 
 
   Grid* mygrid=sim.getgrid();
+//mygrid->toString();
+cout<<mygrid->toString();
 
   //Grid* mygrid=new Grid(5,6,0.5,0.01,0.2,1.,1.,1.,1.,0.1,0.0);
   Cell* changed= mygrid->getcell(1,1);
@@ -23,33 +25,22 @@ int main(int argc, char* argv[]){
       }
   }
   
-  for(int k=0; k<10; ++k){
+  for(int k=0; k<100; ++k){
     cout<<"-------------------------------";
     if(mygrid->compete()){
       cout<<endl;
       cout<<endl;
-      for (int line=0;line<5;++line){
-        for (int col=0;col<6;++col){
-          if ( (mygrid->getcell(col,line)->bacteria() )!=nullptr){
-            cout<<mygrid->getcell(col,line)->bacteria()->b()<<"   ";
-          }else{
-            cout<<"dead  ";
-          }
-        }
-        cout<<endl;
-        cout<<endl;
-      }
+      cout<<mygrid->toString();
+      //mygrid->toString();
+
       for (int line=0;line<5;++line){
         for (int col=0;col<6;++col){
           if ( (mygrid->getcell(col,line)->bacteria() )!=nullptr){
             mygrid->getcell(col,line)->bacteria()->metabolize(0.1,0.1,mygrid->getcell(col,line)->a(),0.1,0.1,mygrid->getcell(col,line)->b(),0.1);
-            cout<<mygrid->getcell(col,line)->bacteria()->b()<<"   ";
-          }else{
-            cout <<"dead  ";
           }
         }
-        cout<<endl;
       }
+      cout<<mygrid->toString();
     }else{
       cout<<"Extinction"<<endl;
       break;

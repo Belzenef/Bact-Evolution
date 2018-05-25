@@ -2,6 +2,7 @@
 #include<iostream>
 using std::cout;
 using std::endl;
+using std::to_string;
 
 //======================================================================
 //                              Constructors
@@ -110,6 +111,26 @@ void Grid::metabolize(float dt){
 			}
 		}
 	}
+}
+
+string Grid::toString(){
+  string drawGrid="";
+  for (int line=0;line<height_;++line){
+    for (int col=0;col<width_;++col){
+      if ( ( getcell(col,line)->bacteria() )!=nullptr){
+        drawGrid=drawGrid+ to_string( getcell(col,line)->bacteria()->getW() )+"   ";
+       // cout<<to_string( getcell(col,line)->bacteria()->b() )+"   ";
+      }else{
+        drawGrid=drawGrid+"dead       ";
+        //cout<<"dead  ";
+      }
+    }
+    drawGrid=drawGrid+"\n";
+ //   cout<<endl;
+  }
+  drawGrid=drawGrid+"\n"+"\n";
+  //cout<<endl<<endl;
+  return drawGrid;
 }
 
 // =====================================================================
