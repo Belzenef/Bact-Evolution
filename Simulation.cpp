@@ -23,7 +23,7 @@ Simulation::~Simulation(){
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-int Simulation::run(){
+float Simulation::run(){
 		float time=0;
     while(time<tend_){
       if(((int)floor(time))%T_==0.){ //Changing culture every T
