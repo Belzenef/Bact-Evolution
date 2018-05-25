@@ -23,7 +23,7 @@ Simulation::~Simulation(){
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-float Simulation::run(){
+int Simulation::run(){
 		float time=0;
     while(time<tend_){
       if(((int)floor(time))%T_==0.){ //Changing culture every T
@@ -39,7 +39,7 @@ float Simulation::run(){
       if(Ga::nbL_==0) { 
         std::cout<< "extinction" << std::endl;
         return -1.; 
-        } else { 
+      } else { 
           std::cout<< "exclusion" << std::endl;
           return 0.; 
         } 

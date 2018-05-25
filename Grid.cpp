@@ -11,7 +11,6 @@ Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, fl
   for(int x=0; x<width_; ++x){
     for(int y=0; y<height_; ++y){
       grid_[Coordinates(x,y).to_int(height_)] = new Cell(ainit_,0,0,x,y);
-      keys_.push_back( Coordinates(x,y).to_int(height_) ); //fill the vector of keys
     }     
   }
 }
@@ -69,14 +68,12 @@ bool Grid::compete(){ //return false if extinction
     vector<Cell*> neighbours_list;
     Cell* my_cell;
 
-    random_shuffle(keys_.begin(),keys_.end()); //to go through the grid randomly
-    for ( auto key:keys_){
-      my_cell=grid_[key];
+    for ( auto it : grid_){
+      my_cell=it.second;
       if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
 
         //fetch neighbours
-        neighbours_list=alive_neighbours(key);
-        random_shuffle(neighbours_list.begin(),neighbours_list.end()); //To go through the neighbours randomly
+        neighbours_list=alive_neighbours(it.first);
         if (neighbours_list.size()!=0){
           Cell* best_neighbour;
           unsigned int best_fitness=0;
