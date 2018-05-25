@@ -30,10 +30,11 @@ int main(int argc, char* argv[]){
 	myfile.open("SimulationOutputs.csv");
 
 	//////// Filling the output file with the simulation  ////////
+	Simulation sim(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 	while(T<=Tmax){
 		std::cout << "T = " << T << std::endl;
 		while(ainit<=AinitMax){
-			Simulation sim(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
+			sim.reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 			myfile << ainit <<","<<T<<","<<sim.run()<<"\n";
 			ainit+=dA;
 		}
