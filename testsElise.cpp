@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
 	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
 	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
 	
-	std::cout << "\nDeleting instances : " << std::endl;
+	std::cout << "\nDeleting instances bact B, bactA, grid" << std::endl;
 	delete bactB;
 	delete bactA;
 	delete grid;
@@ -58,6 +58,11 @@ int main(int argc, char* argv[]){
 	
 	std::cout << "\nTesting run() : " << std::endl;
 	std::cout << sim->run() << std::endl;
+	
+	std::cout << "\nTesting reset() : " << std::endl;
+	sim->reset(2,2,3.,.6,.4,.6,.6,.6,.6,.6,.6,10,30,.001);
+	std::cout << "\nNumber of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
+	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
 	
 	std::cout << "\nDeleting instances" << std::endl;
 	delete sim;
