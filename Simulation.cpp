@@ -49,5 +49,17 @@ int Simulation::run(){
     } 
 }
 
+void Simulation::reset(unsigned int height, unsigned int width, float ainit, 
+	float pdeath, float pmut, float Raa, float Rab, float Rbb, 
+	float Rbc, float d, float wmin, unsigned int T, unsigned int tend, float dt){
+    T_ = T;
+    tend_ = tend;
+    dt_ = dt;
+    if(grid_!=nullptr){
+      delete grid_;
+    }
+    grid_ = new Grid(height, width, ainit, pdeath, pmut, Raa, Rab, Rbb, Rbc, d, wmin);
+  }
+
 
 
