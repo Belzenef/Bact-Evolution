@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
 
 	//////// Defining T and Ainit domain ////////
 	unsigned int Tmin=1;
-	unsigned int Tmax=200;
+	unsigned int Tmax=1500;
 
 	float AinitMin=0.;
 	float AinitMax=50.;
@@ -30,6 +30,8 @@ int main(int argc, char* argv[]){
 	myfile.open("SimulationOutputs.csv");
 
 	//////// Filling the output file with the simulation  ////////
+
+	//Simualtion sim(height, width, ainit, pdeath, pmut, Raa, Rab, Rbb, Rbc, d, wmin, T, tend, dt)
 	Simulation sim(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 	while(T<=Tmax){
 		std::cout << "T = " << T << std::endl;
