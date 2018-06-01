@@ -30,21 +30,20 @@ float Simulation::run(){
         grid_->reinit();
       }
       grid_->diffuse();
-      std::cout<<"ok"<<std::endl;
       if(not grid_->compete()){break;}
       grid_->metabolize(dt_);
       time+=dt_;
     }
     if(Gb::nbS_==0){
       if(Ga::nbL_==0) { 
-        std::cout<< "extinction" << std::endl;
+        //std::cout<< "extinction" << std::endl;
         return -1.; 
       } else { 
-          std::cout<< "exclusion" << std::endl;
+          //std::cout<< "exclusion" << std::endl;
           return 0.; 
         } 
     } else { 
-      std::cout<< "cohabitation" << std::endl;
+      //std::cout<< "cohabitation" << std::endl;
       return (Gb::nbS_/Ga::nbL_); 
     } 
 }
