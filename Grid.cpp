@@ -1,4 +1,5 @@
 #include "Grid.h"
+#include "Bacteria.h"
 #include<iostream>
 using std::cout;
 using std::endl;
@@ -97,17 +98,19 @@ bool Grid::compete(){ //return false if extinction
 void Grid::metabolize(float dt){
 	float out=0.;
 	for (auto it : grid_){
-		if (not (it.second->bacteria()==nullptr)){
-			out = ((it.second)->bacteria())->metabolize(raa_, rab_, it.second->a() , rbb_, rbc_, it.second->b(), dt);
+		Cell* my_cell;
+		Bacteria* my_bacteria= my_cell->bacteria();
+		if (not (my_bacteria==nullptr)){
+			out = my_bacteria->metabolize(raa_, rab_, my_cell->a() , rbb_, rbc_, my_cell->b(), dt);
 	
-			//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Aout	
-			if ( ((it.second) -> bacteria())->isGa()){
-					it.second->seta(out);
+			//if the bacteria in the Cell it.second is a Ga bacteria, then out=Aout	
+			if ( my_bacteria->isGa()){
+					my_cell->seta(out);
 			}
 	
-			//if the bacteria in ithe Cell it.second is a Ga bacteria, then out=Bout		
+			//if the bacteria in the Cell it.second is a Gb bacteria, then out=Bout		
 			else{
-					it.second->setb(out);
+					my_cell->setb(out);
 			}
 		}
 	}

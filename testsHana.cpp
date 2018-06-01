@@ -53,10 +53,10 @@ int main(int argc, char* argv[]){
 	std::cout << "Before reinit : " << Grid1.getcell(1,1) -> a() << std::endl;
 
 	Grid1.reinit();
-	std::cout << "After reinit : " << Grid1.getcell(1,1) -> a() << std::endl;*/
+	std::cout << "After reinit : " << Grid1.getcell(1,1) -> a() << std::endl;
 
 	//testing metabolize
-	/*std::cout << "testing Grid metabolize" << std::endl;
+	std::cout << "testing Grid metabolize" << std::endl;
 	std::cout << "Grid1 Cell at coordinates (1,1) has :" << std::endl;
 	std::cout << "A= " << Grid1.getcell(1,1)->a()<< std::endl;
 	std::cout << "B= " << Grid1.getcell(1,1)->b()<< std::endl;
