@@ -79,10 +79,14 @@ bool Grid::compete(){ //return false if extinction
         if (neighbours_list.size()!=0){
           Cell* best_neighbour;
           unsigned int best_fitness=0;
+          Bacteria* other_bacteria;
+          float other_bacterias_w;
           for (auto other_cell : neighbours_list){
-            if ( ( ( other_cell->bacteria() )->getW(wmin_) )>best_fitness ){
+            other_bacteria=other_cell->bacteria();
+            other_bacterias_w=other_bacteria->getW(wmin_);
+            if ( other_bacterias_w>best_fitness ){
               best_neighbour=other_cell;
-              best_fitness= ( ( other_cell->bacteria() )->getW(wmin_) );
+              best_fitness= other_bacterias_w;
             }
           }
           best_neighbour->fill(my_cell,pmut_);
@@ -118,10 +122,12 @@ void Grid::metabolize(float dt){
 
 string Grid::toString(){
   string drawGrid="";
+  Bacteria* my_bacteria;
   for (int line=0;line<height_;++line){
     for (int col=0;col<width_;++col){
-      if ( ( getcell(col,line)->bacteria() )!=nullptr){
-        drawGrid=drawGrid+ to_string( getcell(col,line)->bacteria()->getW(wmin_) )+"   ";
+      my_bacteria= getcell(col,line)->bacteria() ;
+      if ( my_bacteria!=nullptr){
+        drawGrid=drawGrid+ to_string( my_bacteria->getW(wmin_) )+"   ";
        // cout<<to_string( getcell(col,line)->bacteria()->b() )+"   ";
       }else{
         drawGrid=drawGrid+"dead       ";
@@ -172,6 +178,7 @@ vector<Cell*> Grid::neighbours(unsigned int coordinates){
 vector<Cell*> Grid::fine_neighbours(unsigned int coordinates){ //same as neighbours with one "if" added
   int other_x, other_y; //neighbour cell
   Cell* other_cell;
+  Bacteria* other_bacteria;
   Coordinates my_coord(coordinates,height_,width_) ;
   vector<Cell*> neighbours_list;
   for (int dx=-1; dx<=1; ++dx){
@@ -193,8 +200,9 @@ vector<Cell*> Grid::fine_neighbours(unsigned int coordinates){ //same as neighbo
 
       //add neighbour to the vector
       other_cell=grid_.at( Coordinates(other_x,other_y).to_int(height_) );
-      if ( ( other_cell->bacteria() )!=nullptr ){
-        if ( other_cell->bacteria()->getW(wmin_) != 0){
+      other_bacteria=other_cell->bacteria();
+      if ( other_bacteria!=nullptr ){
+        if ( other_bacteria->getW(wmin_) != 0){
           neighbours_list.push_back( other_cell );
         }
       }
@@ -214,7 +222,7 @@ void Grid::reinit(){
 }
 
 bool Grid::isExtinct(){
-	if (Ga::nbL_ == 0 & Gb::nbS_ == 0){
+	if (Ga::nbL_ == 0 and Gb::nbS_ == 0){
 		return 1;	
 	}
 	else {return 0;}
