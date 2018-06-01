@@ -83,22 +83,17 @@ void Cell::update(){
 	prevc_ = c_;
 }
 
-void Cell::die(float pdeath, float wmin){
-  if(bacteria_!=nullptr){ //do nothing if the bacteria is already dead
-    if(bacteria_ -> getW() < wmin){ // testing fitness threshold
-		  a_ += bacteria_ -> a();
-		  b_ += bacteria_ -> b();
-		  c_ += bacteria_ -> c();
-      delete bacteria_;
-      bacteria_=nullptr;
-    } 
-	  else if (((float) rand()/RAND_MAX )<pdeath){ // testing death propability
+void Cell::die(float pdeath){
+  if(bacteria_!=nullptr){ //do nothing if the bacteria is already dead 
+		float r= rand()/RAND_MAX;
+		std::cout << "r= " << r <<std::endl;
+		if (r<pdeath){ // testing death propability (float) rand()/RAND_MAX
     	a_ += bacteria_ -> a();
 		  b_ += bacteria_ -> b();
 		  c_ += bacteria_ -> c();
       delete bacteria_;
       bacteria_=nullptr;
-    } 
+		}
   }
 }
 
