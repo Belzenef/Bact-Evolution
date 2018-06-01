@@ -48,10 +48,10 @@ if(bacteria_!=nullptr){
 //                        Public Function members
 // =========================================================================
 void Cell::fill(Cell* to_fill, float pmut){
-  bool Ga=bacteria()->isGa(); //True if parent bacteria is Ga
-  float a_parent=bacteria()->a();
-  float b_parent=bacteria()->b();
-  float c_parent=bacteria()->c();
+  bool Ga=bacteria_->isGa(); //True if parent bacteria is Ga
+  float a_parent=bacteria_->a();
+  float b_parent=bacteria_->b();
+  float c_parent=bacteria_->c();
 
   //fill the cell to fill
   bool mutate=( ((float) rand()/RAND_MAX )<pmut ); //True if a mutation happens
