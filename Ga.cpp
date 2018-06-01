@@ -34,3 +34,9 @@ float Ga::metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, flo
   return Aout;
 }
 
+float Ga::getW(float wmin){
+  if (b_<wmin)
+    return 0;
+  else
+    return b_;
+}

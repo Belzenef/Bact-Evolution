@@ -32,4 +32,9 @@ float Gb::metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, flo
   }
   return Bout;
 }
-
+float Gb::getW(float wmin){
+  if (c_<wmin)
+    return 0;
+  else
+    return c_;
+}

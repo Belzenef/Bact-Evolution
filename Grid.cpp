@@ -79,9 +79,9 @@ bool Grid::compete(){ //return false if extinction
           Cell* best_neighbour;
           unsigned int best_fitness=0;
           for (auto other_cell : neighbours_list){
-            if ( ( ( other_cell->bacteria() )->getW() )>best_fitness ){
+            if ( ( ( other_cell->bacteria() )->getW(wmin_) )>best_fitness ){
               best_neighbour=other_cell;
-              best_fitness= ( ( other_cell->bacteria() )->getW() );
+              best_fitness= ( ( other_cell->bacteria() )->getW(wmin_) );
             }
           }
           best_neighbour->fill(my_cell,pmut_);
@@ -118,7 +118,7 @@ string Grid::toString(){
   for (int line=0;line<height_;++line){
     for (int col=0;col<width_;++col){
       if ( ( getcell(col,line)->bacteria() )!=nullptr){
-        drawGrid=drawGrid+ to_string( getcell(col,line)->bacteria()->getW() )+"   ";
+        drawGrid=drawGrid+ to_string( getcell(col,line)->bacteria()->getW(wmin_) )+"   ";
        // cout<<to_string( getcell(col,line)->bacteria()->b() )+"   ";
       }else{
         drawGrid=drawGrid+"dead       ";
