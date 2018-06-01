@@ -85,9 +85,7 @@ void Cell::update(){
 
 void Cell::die(float pdeath){
   if(bacteria_!=nullptr){ //do nothing if the bacteria is already dead 
-		float r= rand()/RAND_MAX;
-		std::cout << "r= " << r <<std::endl;
-		if (r<pdeath){ // testing death propability (float) rand()/RAND_MAX
+		if ((float) rand()/RAND_MAX<pdeath){ // testing death propability 
     	a_ += bacteria_ -> a();
 		  b_ += bacteria_ -> b();
 		  c_ += bacteria_ -> c();
