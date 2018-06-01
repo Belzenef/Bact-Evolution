@@ -74,7 +74,7 @@ bool Grid::compete(){ //return false if extinction
       if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
 
         //fetch neighbours
-        neighbours_list=alive_neighbours(it.first);
+        neighbours_list=fine_neighbours(it.first);
         if (neighbours_list.size()!=0){
           Cell* best_neighbour;
           unsigned int best_fitness=0;
@@ -166,7 +166,7 @@ vector<Cell*> Grid::neighbours(unsigned int coordinates){
   return neighbours_list;
 }
 
-vector<Cell*> Grid::alive_neighbours(unsigned int coordinates){ //same as neighbours with one "if" added
+vector<Cell*> Grid::fine_neighbours(unsigned int coordinates){ //same as neighbours with one "if" added
   int other_x, other_y; //neighbour cell
   Cell* other_cell;
   Coordinates my_coord(coordinates,height_,width_) ;

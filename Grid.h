@@ -66,7 +66,7 @@ class Grid{
 //                        Protected Function members
 // =====================================================================
   vector<Cell*> neighbours(unsigned int coordinates);
-  vector<Cell*> alive_neighbours(unsigned int coordinates);
+  vector<Cell*> fine_neighbours(unsigned int coordinates);
   bool isExtinct(); // tests whether the population is extinct (returns 1 if this is the case)
 
 };
