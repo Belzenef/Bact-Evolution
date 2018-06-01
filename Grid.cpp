@@ -211,7 +211,7 @@ void Grid::reinit(){
 }
 
 bool Grid::isExtinct(){
-	if (Ga::nbL_ == 0 & Gb::nbS_ == 0){
+	if (Ga::nbL_ == 0 and Gb::nbS_ == 0){
 		return 1;	
 	}
 	else {return 0;}
