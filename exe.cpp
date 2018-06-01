@@ -7,17 +7,17 @@
 #include "Simulation.h"
 
 ///////// refine function /////////
-void refine(float AinitMax, float dA, unsigned int T, float dt, ofstream* myfile, Simulation* sim){
+void refine(unsigned int TMax, unsigned int dT, float ainit, float dt, ofstream* myfile, Simulation* sim){
 	// refines the parametric exploration
-	float AinitMin=AinitMax-dA;
-	dA= dA/10;
-	float ainit = AinitMin+dA;
+	unsigned int TMin=TMax-dT;
+	dT= dT/10;
+	unsigned int T = TMin+dT;
 	
-	while(ainit<AinitMax){
-		std::cout << "ainit = " << ainit << std::endl;
+	while(T<TMax){
+		std::cout << "T = " << T << std::endl;
 		sim->reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 		(*myfile) << ainit <<","<<T<<","<<sim->run()<<"\n";
-		ainit+=dA;
+		T+=dT;
 	}				
 }
 
@@ -25,16 +25,19 @@ int main(int argc, char* argv[]){
 
 	srand(time(NULL)); //seed used by rand (	we'll have to use srand(time(NULL)) eventually)	
 
-	//////// Defining T and Ainit domain ////////
-	unsigned int Tmin=1;
-	unsigned int Tmax=1500;//1500
-
-	float AinitMin=0.;
-	float AinitMax=50.;
-
 	//////// Defining Ainit step dA and time step dt  ////////
 	float dA=1.;
 	float dt=1.;
+  unsigned int dT=50;
+
+	//////// Defining T and Ainit domain ////////
+	unsigned int Tmin=dT;
+	unsigned int Tmax=1500;//1500
+
+	float AinitMin=dA;
+	float AinitMax=50.;
+
+
 
 	//////// Initializing T and Ainit ////////
 	unsigned int T=Tmin;
@@ -52,25 +55,27 @@ int main(int argc, char* argv[]){
 
 	// Simualtion sim(height, width, ainit, pdeath, pmut, Raa, Rab, Rbb, Rbc, d, wmin, T, tend, dt)
 	Simulation sim(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
-	while(T<=Tmax){
-		std::cout << "T = " << T << std::endl;
+  while(ainit<=AinitMax){
+    std::cout << "ainit = " << ainit << std::endl;
 		prevRun=-2;
-		while(ainit<=AinitMax){
-			std::cout << "ainit = " << ainit << std::endl;
+		while(T<=Tmax){
+			std::cout << "T = " << T << std::endl;
 			sim.reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 			currentRun= sim.run();
 			myfile << ainit <<","<<T<<","<<currentRun<<"\n";
 			if (prevRun!=-2){
 			// doesn't refine during the first iteration
 				if ((currentRun==0 or currentRun==-1) and currentRun!=prevRun){
-					refine(ainit , dA, T, dt, &myfile, &sim);
+					refine(T , dT, ainit, dt, &myfile, &sim);
 				}
-			}
+			}else{
+          refine(T , dT, ainit, dt, &myfile, &sim);
+      }
 			prevRun=currentRun; 
-			ainit+=dA;
+			T+=dT;
 		}
-		++T;
-		ainit=AinitMin;
+		ainit+=dA;
+		T=Tmin;
 	}
 
 	//////// Closing the output file ////////
