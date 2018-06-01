@@ -191,7 +191,9 @@ vector<Cell*> Grid::fine_neighbours(unsigned int coordinates){ //same as neighbo
       //add neighbour to the vector
       other_cell=grid_.at( Coordinates(other_x,other_y).to_int(height_) );
       if ( ( other_cell->bacteria() )!=nullptr ){
-        neighbours_list.push_back( other_cell );
+        if ( other_cell->bacteria()->getW(wmin_) != 0){
+          neighbours_list.push_back( other_cell );
+        }
       }
     }
   } 
