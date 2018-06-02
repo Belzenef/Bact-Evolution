@@ -31,8 +31,8 @@ int main(int argc, char* argv[]){
   unsigned int dT=50;
 
 	//////// Defining T and Ainit domain ////////
-	unsigned int Tmin=1;
-	unsigned int Tmax=1500;//1500
+	unsigned int TMin=1;
+	unsigned int TMax=1500;//1500
 
 	float AinitMin=0;
 	float AinitMax=50.;
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]){
 
 
 	//////// Initializing T and Ainit ////////
-	unsigned int T=Tmin;
+	unsigned int T=TMin;
 	float ainit=AinitMin;
 
 	//////// Defining prevRun and currentRun ////////
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]){
   while(ainit<=AinitMax){
     std::cout << "ainit = " << ainit << std::endl;
 		prevRun=-2;
-		while(T<=Tmax){
+		while(T<=TMax){
 			std::cout << "T = " << T << std::endl;
 			sim.reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 			currentRun= sim.run();
@@ -74,17 +74,17 @@ int main(int argc, char* argv[]){
 			}
 			prevRun=currentRun; 
 			if(T < TMax and (T+dT)> TMax){ //To be sure to do the simulation for TMax
-			  T=TMax
+			  T=TMax;
 		    }else{
 			  T+=dT;
 		    }
 		}
 		if(ainit < AinitMax and (ainit+dA)> AinitMax){ //To be sure to do the simulation for AinitMax
-			ainit=AinitMax
+			ainit=AinitMax;
 		}else{
 			ainit+=dA;
 		}
-		T=Tmin;
+		T=TMin;
 	}
 
 	//////// Closing the output file ////////
