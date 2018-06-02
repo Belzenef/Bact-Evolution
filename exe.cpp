@@ -27,14 +27,14 @@ int main(int argc, char* argv[]){
 
 	//////// Defining Ainit step dA and time step dt  ////////
 	float dA=1.;
-	float dt=1.;
+	float dt=0.1;
   unsigned int dT=50;
 
 	//////// Defining T and Ainit domain ////////
-	unsigned int Tmin=dT;
+	unsigned int Tmin=1;
 	unsigned int Tmax=1500;//1500
 
-	float AinitMin=dA;
+	float AinitMin=0;
 	float AinitMax=50.;
 
 
@@ -62,6 +62,7 @@ int main(int argc, char* argv[]){
 			std::cout << "T = " << T << std::endl;
 			sim.reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
 			currentRun= sim.run();
+			std::cout << "result = " << currentRun << std::endl;
 			myfile << ainit <<","<<T<<","<<currentRun<<"\n";
 			if (prevRun!=-2){
 			// doesn't refine during the first iteration
@@ -69,12 +70,20 @@ int main(int argc, char* argv[]){
 					refine(T , dT, ainit, dt, &myfile, &sim);
 				}
 			}else{
-          refine(T , dT, ainit, dt, &myfile, &sim);
-      }
+			  refine(T , dT, ainit, dt, &myfile, &sim);
+			}
 			prevRun=currentRun; 
-			T+=dT;
+			if(T < TMax and (T+dT)> TMax){ //To be sure to do the simulation for TMax
+			  T=TMax
+		    }else{
+			  T+=dT;
+		    }
 		}
-		ainit+=dA;
+		if(ainit < AinitMax and (ainit+dA)> AinitMax){ //To be sure to do the simulation for AinitMax
+			ainit=AinitMax
+		}else{
+			ainit+=dA;
+		}
 		T=Tmin;
 	}
 
