@@ -101,9 +101,11 @@ bool Grid::compete(){ //return false if extinction
 
 void Grid::metabolize(float dt){
 	float out=0.;
+	Cell* my_cell;
+	Bacteria* my_bacteria;
 	for (auto it : grid_){
-		Cell* my_cell;
-		Bacteria* my_bacteria= my_cell->bacteria();
+		my_cell=it.second;
+		my_bacteria= my_cell->bacteria();
 		if (not (my_bacteria==nullptr)){
 			out = my_bacteria->metabolize(raa_, rab_, my_cell->a() , rbb_, rbc_, my_cell->b(), dt);
 	
@@ -140,7 +142,28 @@ string Grid::toString(){
   drawGrid=drawGrid+"\n"+"\n";
   //cout<<endl<<endl;
   return drawGrid;
-}
+}/*
+string Grid::toString(){
+  string drawGrid="";
+  Bacteria* my_bacteria;
+  for (int line=0;line<height_;++line){
+    for (int col=0;col<width_;++col){
+      my_bacteria= getcell(col,line)->bacteria() ;
+      if ( my_bacteria!=nullptr){
+        drawGrid=drawGrid+ to_string( my_bacteria->isGa() )+"   ";
+       // cout<<to_string( getcell(col,line)->bacteria()->b() )+"   ";
+      }else{
+        drawGrid=drawGrid+"dead       ";
+        //cout<<"dead  ";
+      }
+    }
+    drawGrid=drawGrid+"\n";
+ //   cout<<endl;
+  }
+  drawGrid=drawGrid+"\n"+"\n";
+  //cout<<endl<<endl;
+  return drawGrid;
+}*/
 
 // =====================================================================
 //                        Protected Function members

@@ -33,6 +33,7 @@ float Simulation::run(){
       if(not grid_->compete()){break;}
       grid_->metabolize(dt_);
       time+=dt_;
+	  //std::cout<<grid_->toString()<<endl<<"---------------------"<<endl;
     }
     if(Gb::nbS_==0){
       if(Ga::nbL_==0) { 
