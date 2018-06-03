@@ -7,7 +7,7 @@
 #include "Simulation.h"
 
 ///////// refine function /////////
-void refine(unsigned int TMax, unsigned int dT, float ainit, float dt, ofstream* myfile, Simulation* sim){
+void refine(unsigned int TMax, unsigned int dT, float ainit, float dt, ofstream* myfile, Simulation* sim,float pmut){
 	// refines the parametric exploration
 	unsigned int TMin=TMax-dT;
 	dT= dT/10;
@@ -15,14 +15,14 @@ void refine(unsigned int TMax, unsigned int dT, float ainit, float dt, ofstream*
 	
 	while(T<TMax){
 		std::cout << "T = " << T << std::endl;
-		sim->reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
+		sim->reset(32, 32, ainit, .02, pmut, .1,.1,.1,.1, .1, .001, T, 5000, dt);
 		(*myfile) << ainit <<","<<T<<","<<sim->run()<<"\n";
 		T+=dT;
 	}				
 }
 
 int main(int argc, char* argv[]){
-
+		
 	srand(time(NULL)); //seed used by rand (	we'll have to use srand(time(NULL)) eventually)	
 
 	//////// Defining Ainit step dA and time step dt  ////////
@@ -36,6 +36,8 @@ int main(int argc, char* argv[]){
 
 	float AinitMin=0;
 	float AinitMax=50.;
+	//////// Defining pmut ////////
+	float pmut=0.001;
 
 
 
@@ -54,23 +56,23 @@ int main(int argc, char* argv[]){
 	//////// Filling the output file with the simulation  ////////
 
 	// Simualtion sim(height, width, ainit, pdeath, pmut, Raa, Rab, Rbb, Rbc, d, wmin, T, tend, dt)
-	Simulation sim(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
+	Simulation sim(32, 32, ainit, .02, pmut, .1,.1,.1,.1, .1, .001, T, 5000, dt);
   while(ainit<=AinitMax){
     std::cout << "ainit = " << ainit << std::endl;
 		prevRun=-2;
 		while(T<=TMax){
 			std::cout << "T = " << T << std::endl;
-			sim.reset(32, 32, ainit, .02, 0., .1,.1,.1,.1, .1, .001, T, 5000, dt);
+			sim.reset(32, 32, ainit, .02, pmut, .1,.1,.1,.1, .1, .001, T, 5000, dt);
 			currentRun= sim.run();
 			std::cout << "result = " << currentRun << std::endl;
 			myfile << ainit <<","<<T<<","<<currentRun<<"\n";
 			if (prevRun!=-2){
 			// doesn't refine during the first iteration
 				if ((currentRun==0 or currentRun==-1) and currentRun!=prevRun){
-					refine(T , dT, ainit, dt, &myfile, &sim);
+					refine(T , dT, ainit, dt, &myfile, &sim,pmut);
 				}
 			}else{
-			  refine(T , dT, ainit, dt, &myfile, &sim);
+			  refine(T , dT, ainit, dt, &myfile, &sim,pmut);
 			}
 			prevRun=currentRun; 
 			if(T < TMax and (T+dT)> TMax){ //To be sure to do the simulation for TMax
