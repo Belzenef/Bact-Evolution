@@ -7,7 +7,7 @@
 #include "Coordinates.h"
 
 int main(int argc, char* argv[]){
-	std::cout << "Testing creation of bacterias (Ga et Gb)" << std::endl;
+	/*std::cout << "Testing creation of bacterias (Ga et Gb)" << std::endl;
 	Gb * bactB = new Gb(1.0,2.0,3.0);
 	Ga * bactA = new Ga(1.0,0.3,3.0);
 	std::cout << "Number of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
@@ -67,7 +67,7 @@ int main(int argc, char* argv[]){
 	std::cout << "\nDeleting instances" << std::endl;
 	delete sim;
 	std::cout << "\nNumber of Ga instances (L bacteria) : " << Ga::nbL_ << std::endl;
-	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;
+	std::cout << "Number of Gb instances (S bacteria) : " << Gb::nbS_ << std::endl;*/
 	
 	return 0;
 }
