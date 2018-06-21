@@ -1,3 +1,5 @@
+/* This class can run the simulation with given parameters. It contains a Grid defined with those parameters */
+
 #ifndef SIMUL_H  
 #define SIMUL_H
 
@@ -33,7 +35,7 @@ class Simulation {
 	unsigned int state(); // tests whether the state is "extinction"(=0), "exclusion"(=1) or "cohabitation"(=2)
 	void reset(unsigned int height, unsigned int width, float ainit, 
 	float pdeath, float pmut, float Raa, float Rab, float Rbb, 
-	float Rbc, float d, float wmin, unsigned int T, unsigned int tend, float dt);
+	float Rbc, float d, float wmin, unsigned int T, unsigned int tend, float dt); // resets this grid_ with the given different parameters
 	
  protected :
 // =====================================================================

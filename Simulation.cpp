@@ -55,7 +55,7 @@ void Simulation::reset(unsigned int height, unsigned int width, float ainit,
     T_ = T;
     tend_ = tend;
     dt_ = dt;
-    if(grid_!=nullptr){
+    if(grid_!=nullptr){ 
       delete grid_;
     }
     grid_ = new Grid(height, width, ainit, pdeath, pmut, Raa, Rab, Rbb, Rbc, d, wmin);

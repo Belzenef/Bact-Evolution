@@ -1,3 +1,6 @@
+/*this class defines a Cell containing a bacteria as well as the different metabolites'concentration specific to this Cell. It can also check whether its bacteria is alive. If need be, it can fill itself with a daughter bacteria who can mutate  */
+
+
 #ifndef CELL_H_
 #define CELL_H_
 #include "Bacteria.h"
@@ -43,8 +46,8 @@ class Cell{
 // =====================================================================
 //                        Public Function members
 // =====================================================================
-  void fill(Cell* to_fill, float pmut);
-  void update();
+  void fill(Cell* to_fill, float pmut); // fills the Cell with a daughter bacteria which can mutate with a probability pmut
+  void update(); // preva_ <- a_ , prevb_ <- b_ , prevc_ <- c_
   void die(float pdeath); // tests whether the bacteria in this Cell is dead and deletes it
 
  protected :
