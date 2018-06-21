@@ -23,7 +23,7 @@ void refine(unsigned int TMax, unsigned int dT, float ainit, float dt, ofstream*
 
 int main(int argc, char* argv[]){
 		
-	srand(time(NULL)); //seed used by rand (	we'll have to use srand(time(NULL)) eventually)	
+	srand(time(NULL)); //seed used by rand 
 
 	//////// Defining Ainit step dA and time step dt  ////////
 	float dA=1.;
