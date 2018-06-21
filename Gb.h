@@ -1,3 +1,9 @@
+/***********************************************************************
+ * This class defines the general behaviour 
+ * of a S bacteria (with B genotype)
+ * Inherited from class Bacteria
+ * ********************************************************************/
+
 #ifndef GB_H  
 #define GB_H
 
@@ -24,7 +30,7 @@ class Gb : public Bacteria {
 // =====================================================================
 //                       Definition of static attributes
 // =====================================================================
-	static unsigned int nbS_;
+	static unsigned int nbS_;   // Number of Gb instances currently existing
 
 };
 

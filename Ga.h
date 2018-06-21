@@ -1,3 +1,9 @@
+/***********************************************************************
+ * This class defines the general behaviour 
+ * of a L bacteria (with A genotype)
+ * Inherited from class Bacteria
+ * ********************************************************************/ 
+
 #ifndef GA_H  
 #define GA_H
 
@@ -25,7 +31,7 @@ class Ga : public Bacteria {
 // =====================================================================
 //                       Definition of static attributes
 // =====================================================================
-	static unsigned int nbL_;
+	static unsigned int nbL_;   // Number of Ga instances currently existing
   
 };
 

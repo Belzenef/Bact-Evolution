@@ -1,3 +1,8 @@
+/***********************************************************************
+ * This class defines the general behaviour of a bacteria, 
+ * whether it has a A or B genotype.
+ * ********************************************************************/
+
 #ifndef BACTERIA_H  
 #define BACTERIA_H
 
@@ -25,11 +30,12 @@ class Bacteria {
 //======================================================================
   inline void setb(float b);
   inline void setc(float c);
+  
 // =====================================================================
 //                           Public Function members
 // =====================================================================
   virtual float metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt) = 0;
-  virtual float getW(float wmin) = 0;
+  virtual float getW(float wmin) = 0;   // Return bacteria's fitness
   virtual bool isGa() const = 0;
 
 
@@ -37,9 +43,10 @@ class Bacteria {
 // =====================================================================
 //                               Data members
 // =====================================================================
-  float a_;
-  float b_;
-  float c_;
+  // Bacteria's phenotype : 
+  float a_;   // Internal metabolic glucose concentration
+  float b_;   // Internal metabolic acetate concentration
+  float c_;   // Internal metabolic ethanol concentration
 };
 
 // =====================================================================

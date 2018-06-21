@@ -23,6 +23,7 @@ Gb::~Gb(){
 //                           Public Function members
 // =====================================================================
 float Gb::metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt){
+	// Numerical equations representing the metabolic network's evolution
 	float i=0;
   while(i<1.0){
     Bout += dt*(-Bout*Rbb);
@@ -32,6 +33,7 @@ float Gb::metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, flo
   }
   return Bout;
 }
+
 float Gb::getW(float wmin){
   if (c_<wmin)
     return 0;

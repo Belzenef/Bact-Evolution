@@ -22,8 +22,8 @@ Ga::~Ga(){
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-
 float Ga::metabolize(float Raa, float Rab, float Aout, float Rbb, float Rbc, float Bout, float dt){
+  // Numerical equations representing the metabolic network's evolution
   float i=0;
   while(i<1.0){
     Aout += dt*(-Aout*Raa);
