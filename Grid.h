@@ -1,5 +1,9 @@
-/*This class allow us to stock every cell containing the bacteria, in a big unordered_map. It also treat the competition and diffusion function, and ensure that bacterias metabolize when we want.
-*/
+/***********************************************************************
+ * This class allow us to stock every cell containing the bacteria, 
+ * in a big unordered_map. It also treat the competition and diffusion 
+ * function, and ensure that bacterias metabolize when we want.
+ * ********************************************************************/ 
+
 #ifndef GRID  // if guard
 #define GRID
 

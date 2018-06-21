@@ -1,6 +1,11 @@
+/***********************************************************************
+ * This class allow us to create coordinates (x,y) for a cell 
+ * in the grid, and to convert it to a single index, that will be 
+ * the key for the unsigned_map in which we stock the cell
+ * ********************************************************************/ 
+ 
 #ifndef COORD_H  
 #define COORD_H
-/*This class allow us to create coordinates (x,y) for a cell in the grid, and to convert it to a single index, that will be the key for the unsigned_map in which we stock the cell*/
 
 class Coordinates {
 	public :
