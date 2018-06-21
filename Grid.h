@@ -1,3 +1,5 @@
+/*This class allow us to stock every cell containing the bacteria, in a big unordered_map. It also treat the competition and diffusion function, and ensure that bacterias metabolize when we want.
+*/
 #ifndef GRID  // if guard
 #define GRID
 
@@ -12,9 +14,6 @@ using namespace std;
 
 class Grid{
   public :
-
-
-
 //======================================================================
 //                              Constructors
 //======================================================================
@@ -28,8 +27,7 @@ class Grid{
 //======================================================================
 //                              Getters
 //======================================================================
-  //JUST FOR TESTS
-  Cell* getcell(int x, int y);
+  Cell* getcell(int x, int y); //return the cell at coordinates (x,y)
   inline unsigned int height();
 //======================================================================
 //                              Setters
@@ -37,12 +35,12 @@ class Grid{
 // =====================================================================
 //                        Public Function members
 // =====================================================================
-  void diffuse();
-
+  void diffuse(); 
   bool compete();//return false if extinction
 	void metabolize(float dt);//runs Bacteria::metabolize for each alive bacteria of the Grid.
-	void reinit();
-  string toString();
+	void reinit(); //Wash the grid, reinitializing a_,b_,c_ for each cell to (ainit_,0,0)
+
+  string toString(); //Unused function, except for testing
 
   protected :
 
@@ -65,9 +63,9 @@ class Grid{
 // =====================================================================
 //                        Protected Function members
 // =====================================================================
-  vector<Cell*> neighbours(unsigned int coordinates);
-  vector<Cell*> fine_neighbours(unsigned int coordinates);
-  bool isExtinct(); // tests whether the population is extinct (returns 1 if this is the case)
+  vector<Cell*> neighbours(unsigned int coordinates); //Return a vector containing the neighbours of the cell at coordinates
+  vector<Cell*> fine_neighbours(unsigned int coordinates);//Return a vector containing the non-zero-fitness-ed neighbours of the cell at coordinates
+  bool isExtinct(); // tests whether the population is extinct (returns TRUE if this is the case)
 
 };
 // =====================================================================

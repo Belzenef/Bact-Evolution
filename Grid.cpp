@@ -10,6 +10,8 @@ using std::to_string;
 //======================================================================
 Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, float pmut, float raa, float rab, float rbb, float rbc, float d, float wmin): 
    height_(height), width_(width), ainit_(ainit), pdeath_(pdeath), pmut_(pmut), raa_(raa), rab_(rab), rbb_(rbb), rbc_(rbc), d_(d), wmin_(wmin) {
+
+	//for each possible coordinates, create a Cell and add it to the grid
   for(int x=0; x<width_; ++x){
     for(int y=0; y<height_; ++y){
       grid_[Coordinates(x,y).to_int(height_)] = new Cell(ainit_,0,0,x,y);
@@ -20,15 +22,15 @@ Grid::Grid(unsigned int height,unsigned int width, float ainit, float pdeath, fl
 //                              Destructors
 //======================================================================
 Grid::~Grid() {
+	//delete each cell in the grid
   for(auto it:grid_){
-    delete it.second;
+    delete it.second; 
   }
 }
 
 //======================================================================
 //                              Getters
 //======================================================================
-  //JUST FOR TESTS
   Cell* Grid::getcell(int x, int y){
     int key=Coordinates(x,y).to_int(height_);
     return grid_.at(key);
@@ -37,9 +39,11 @@ Grid::~Grid() {
 //                        Public Function members
 // =====================================================================
 void Grid::diffuse(){
+	//update each cell
   for ( auto it : grid_){
     it.second->update(); //prev_a_<-a_, prev_b_<-b, prev_c_<-c_
   }
+	//Computes diffusion
   vector<Cell*> neighbours_list;
   Cell* my_cell;
   for ( auto it : grid_){
@@ -61,11 +65,12 @@ void Grid::diffuse(){
 
 bool Grid::compete(){ //return false if extinction
 
-  for ( auto it : grid_){ //check who is dead
+	//check who is dead
+  for ( auto it : grid_){ 
     it.second->die(pdeath_); 
   }
 
-  
+  //Doesn't compete if all bacterias are dead
   if (not isExtinct()){
     vector<Cell*> neighbours_list;
     Cell* my_cell;
@@ -74,13 +79,14 @@ bool Grid::compete(){ //return false if extinction
       my_cell=it.second;
       if( (my_cell->bacteria()) == nullptr ){ //if the bacteria is dead
 
-        //fetch neighbours
+        //fetch neighbours able to compete
         neighbours_list=fine_neighbours(it.first);
         if (neighbours_list.size()!=0){
           Cell* best_neighbour;
           unsigned int best_fitness=0;
           Bacteria* other_bacteria;
           float other_bacterias_w;
+					//go through all neighbours to find the one with the better fitness
           for (auto other_cell : neighbours_list){
             other_bacteria=other_cell->bacteria();
             other_bacterias_w=other_bacteria->getW(wmin_);
@@ -89,18 +95,20 @@ bool Grid::compete(){ //return false if extinction
               best_fitness= other_bacterias_w;
             }
           }
+					//The best neighbour fill the gap
           best_neighbour->fill(my_cell,pmut_);
         }
       }
     }
-    return true;
+    return true; //no extinction
   }else{
-    return false;
+    return false;//Extinction
   }
 }
 
 void Grid::metabolize(float dt){
 	float out=0.;
+	//go through every cell to make it's bacteria metabolize
 	Cell* my_cell;
 	Bacteria* my_bacteria;
 	for (auto it : grid_){
@@ -123,6 +131,7 @@ void Grid::metabolize(float dt){
 }
 
 string Grid::toString(){
+	//go through every cell, and add it's bacteria's fitness to the string to return
   string drawGrid="";
   Bacteria* my_bacteria;
   for (int line=0;line<height_;++line){
@@ -130,49 +139,26 @@ string Grid::toString(){
       my_bacteria= getcell(col,line)->bacteria() ;
       if ( my_bacteria!=nullptr){
         drawGrid=drawGrid+ to_string( my_bacteria->getW(wmin_) )+"   ";
-       // cout<<to_string( getcell(col,line)->bacteria()->b() )+"   ";
       }else{
         drawGrid=drawGrid+"dead       ";
-        //cout<<"dead  ";
       }
     }
     drawGrid=drawGrid+"\n";
- //   cout<<endl;
+
   }
   drawGrid=drawGrid+"\n"+"\n";
-  //cout<<endl<<endl;
   return drawGrid;
-}/*
-string Grid::toString(){
-  string drawGrid="";
-  Bacteria* my_bacteria;
-  for (int line=0;line<height_;++line){
-    for (int col=0;col<width_;++col){
-      my_bacteria= getcell(col,line)->bacteria() ;
-      if ( my_bacteria!=nullptr){
-        drawGrid=drawGrid+ to_string( my_bacteria->isGa() )+"   ";
-       // cout<<to_string( getcell(col,line)->bacteria()->b() )+"   ";
-      }else{
-        drawGrid=drawGrid+"dead       ";
-        //cout<<"dead  ";
-      }
-    }
-    drawGrid=drawGrid+"\n";
- //   cout<<endl;
-  }
-  drawGrid=drawGrid+"\n"+"\n";
-  //cout<<endl<<endl;
-  return drawGrid;
-}*/
+}
 
 // =====================================================================
 //                        Protected Function members
 // =====================================================================
 vector<Cell*> Grid::neighbours(unsigned int coordinates){
-  int other_x, other_y; //neighbour cell
+  int other_x, other_y;
   Cell* other_cell;
   Coordinates my_coord(coordinates,height_,width_) ;
   vector<Cell*> neighbours_list;
+	//go through the 9 neighbours (taking the current cell into account)
   for (int dx=-1; dx<=1; ++dx){
     for (int dy=-1; dy<=1; ++dy){ 
       other_x=my_coord.x()+dx;
@@ -204,6 +190,7 @@ vector<Cell*> Grid::fine_neighbours(unsigned int coordinates){ //same as neighbo
   Bacteria* other_bacteria;
   Coordinates my_coord(coordinates,height_,width_) ;
   vector<Cell*> neighbours_list;
+	//go through the 9 neighbours (taking the current cell into account)
   for (int dx=-1; dx<=1; ++dx){
     for (int dy=-1; dy<=1; ++dy){ 
       other_x=my_coord.x()+dx;
@@ -221,7 +208,7 @@ vector<Cell*> Grid::fine_neighbours(unsigned int coordinates){ //same as neighbo
         other_y=0;
       }
 
-      //add neighbour to the vector
+      //add neighbour to the vector only if it's bacteria's fitness in non-zero
       other_cell=grid_.at( Coordinates(other_x,other_y).to_int(height_) );
       other_bacteria=other_cell->bacteria();
       if ( other_bacteria!=nullptr ){
