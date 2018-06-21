@@ -1,6 +1,7 @@
 #ifndef COORD_H  
 #define COORD_H
-
+/*This class allow us to create coordinates (x,y) for a cell in the grid, and to convert it to a single index, that will be the key for the unsigned_map in which we stock the cell*/
+*/
 class Coordinates {
 	public :
 // =====================================================================
@@ -30,7 +31,7 @@ class Coordinates {
 // =====================================================================
 //                           Public Function members
 // =====================================================================
-  unsigned int to_int(unsigned int height);
+  unsigned int to_int(unsigned int height); //return the single index, key of the unsigned_map.
 
   protected :
 // =====================================================================
