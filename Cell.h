@@ -1,5 +1,9 @@
-/*this class defines a Cell containing a bacteria as well as the different metabolites'concentration specific to this Cell. It can also check whether its bacteria is alive. If need be, it can fill itself with a daughter bacteria who can mutate  */
-
+/***********************************************************************
+ * this class defines a Cell containing a bacteria as well as the 
+ * different metabolites'concentration specific to this Cell. 
+ * It can also check whether its bacteria is alive. If need be, 
+ * it can fill itself with a daughter bacteria who can mutate
+ * ********************************************************************/ 
 
 #ifndef CELL_H_
 #define CELL_H_

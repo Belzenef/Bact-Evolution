@@ -1,4 +1,7 @@
-/* This class can run the simulation with given parameters. It contains a Grid defined with those parameters */
+/***********************************************************************
+ * This class can run the simulation with given parameters. 
+ * It contains a Grid defined by those parameters  
+ * ********************************************************************/ 
 
 #ifndef SIMUL_H  
 #define SIMUL_H
